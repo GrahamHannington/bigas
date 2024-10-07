@@ -96,10 +96,23 @@ Default: `100%`
 
 Example: `50%`
 
+## Developer notes
+
+Essentially all Big As does is insert text in an SVG element, and then "shrinkwrap" the `viewBox` attribute of that SVG element to match the bounding box of the text.
+
+Some tricky parts (for me):
+
+-   Waiting for a Google font to be "active" before calculating the bounding box. I used [Web Font Loader](https://github.com/typekit/webfontloader).
+-   Conditionally synchronously loading the Web Font Loader script. The script is loaded only if the user specifies a Google font.
+
 ## To do
 
 Perhaps, if I have time:
 
+-   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
+
 -   Convert the JavaScript into a reusable module with functions. For example:
     -   Trigger the current default behavior by calling, say: `BigAs.elementByIdFromURLParams('svg')`
     -   Apply formatting to multiple SVG elements: `BigAs.elementsByClassName('bigas')`
+    
+-   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS
