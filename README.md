@@ -95,3 +95,11 @@ Example: `50%`
 Default: `100%`
 
 Example: `50%`
+
+## To do
+
+Perhaps, if I have time:
+
+-   Convert the JavaScript into a reusable module with functions. For example:
+    -   Trigger the current default behavior by calling, say: `BigAs.elementByIdFromURLParams('svg')`
+    -   Apply formatting to multiple SVG elements: `BigAs.elementsByClassName('bigas')`
