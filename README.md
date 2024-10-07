@@ -85,13 +85,13 @@ Example: `left`
 
 ### `height`
 
-Default: `100vh`
+Default: `100%`
 
-Example: `50vh`
+Example: `50%`
 
 
 ### `width`
 
-Default: `100vw`
+Default: `100%`
 
-Example: `50vw`
+Example: `50%`
