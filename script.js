@@ -11,8 +11,8 @@ params.googleFont = params.get('googleFont');
 params.textAlign = params.get('textAlign') || 'center'; // left
 params.lineHeight = parseInt(params.get('lineHeight') || '16');
 params.margin = params.get('margin') || '2vh';
-params.width = params.get('width') || '100vw';
-params.height = params.get('height') || '100vh';
+params.width = params.get('width') || '100%';
+params.height = params.get('height') || '100%';
 
 // If a Google Font is specified, synchronously load the Web Font Loader script
 if (params.googleFont) {
