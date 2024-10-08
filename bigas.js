@@ -5,6 +5,7 @@ function getParamsFromURL () {
   const urlParams = new URLSearchParams(window.location.search)
   var params = {}
   params.text = urlParams.get('text') || 'Big As/Possible'
+  params.textFill = urlParams.get('textFill') || '#FFFFFF'
   params.backgroundColor = urlParams.get('backgroundColor') || '#000000'
   params.fontWeight = urlParams.get('fontWeight') || 'normal'
   params.fontStyle = urlParams.get('fontStyle') || 'normal'
@@ -68,6 +69,7 @@ function styleText (svgElement, params) {
     }
     // Shift narrower lines right, centering them relative to the widest line
     for (const text of svgElement.children) {
+      if (params.textFill) text.style.fill = params.textFill
       thisTextWidth = text.getBBox().width
       if (thisTextWidth < maxTextWidth) {
         text.setAttribute('dx', (maxTextWidth - thisTextWidth) / 2)

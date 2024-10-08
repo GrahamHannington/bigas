@@ -14,6 +14,12 @@ where a slash (/) represents a line break.
 
 [DON'T PANIC](https://grahamhannington.github.io/bigas?text=DON%27T/PANIC&googleFont=Bungee%20Inline&backgroundColor=%23336633)
 
+[YES](https://grahamhannington.github.io/bigas/?text=YES&fontWeight=700&backgroundColor=green)
+
+[NO](https://grahamhannington.github.io/bigas/?text=NO&fontWeight=700&backgroundColor=red)
+
+[GO AWAY](https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=red&text=GO/AWAY) (or words of your choice to that effect)
+
 [Sans teeth, etc.](https://grahamhannington.github.io/bigas?text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything.&textAlign=left) (excerpt of "All the World's a Stage" by William Shakespeare)
 
 [Road sign](https://grahamhannington.github.io/bigas?text=Turn%20right/onto/Hamersley%20Road&googleFont=Overpass&backgroundColor=%23305441&textAlign=left)
@@ -27,6 +33,8 @@ See also the [examples](./examples) folder.
 ### `backgroundColor`
 
 Sets the background color of the page body.
+
+Default: `#000000` (black)
 
 Example hex RGB value:
 
@@ -85,12 +93,27 @@ Default: `center`
 
 Example: `left`
 
+### `textFill`
+
+Text color. (In SVG text, this is known as the fill color.)
+
+Default: `#FFFFFF` (white)
+
+Examples:
+
+`red`
+
+`green`
+
+`blue`
+
+`#CC8899`
+
 ### `height`
 
 Default: `100%`
 
 Example: `50%`
-
 
 ### `width`
 
