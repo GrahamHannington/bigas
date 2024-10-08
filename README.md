@@ -10,6 +10,11 @@ where a slash (/) represents a line break.
 
 **Tip:** Big As is best displayed in your browser's full-screen mode (e.g. press F11).
 
+## Uses
+
+- You're in an airport arrivals hall waiting to meet someone you've never met, and you forgot to tell them to look for the person wearing a blue carnation in their lapel.
+- Any occasion that you want to display text as big as possible on your device.
+
 ## Examples
 
 [DON'T PANIC](https://grahamhannington.github.io/bigas?text=DON%27T/PANIC&googleFont=Bungee%20Inline&backgroundColor=%23336633)
