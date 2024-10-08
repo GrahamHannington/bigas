@@ -113,8 +113,4 @@ Perhaps, if I have time:
 
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 
--   Convert the JavaScript into a reusable module with functions. For example:
-    -   Trigger the current default behavior by calling, say: `BigAs.elementByIdFromURLParams('svg')`
-    -   Apply formatting to multiple SVG elements: `BigAs.elementsByClassName('bigas')`
-    
 -   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS
