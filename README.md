@@ -8,7 +8,7 @@ https://grahamhannington.github.io/bigas?text=Your/text/here
 
 where a slash (/) represents a line break.
 
-You can also specify various other parameters in the URL, such as the background color, or the name of a Google Font to use.
+You can also specify various other parameters in the URL, such as the background color, or the name of a Google font to use.
 
 **Tip:** Big As is best displayed in your browser's full-screen mode (for example, in a desktop browser, press F11).
 
