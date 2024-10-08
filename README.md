@@ -8,7 +8,11 @@ https://grahamhannington.github.io/bigas?text=Your/text/here
 
 where a slash (/) represents a line break.
 
-**Tip:** Big As is best displayed in your browser's full-screen mode (e.g. press F11).
+You can also specify various other parameters in the URL, such as the background color, or the name of a Google Font to use.
+
+**Tip:** Big As is best displayed in your browser's full-screen mode (for example, in a desktop browser, press F11).
+
+For details on using Big As in your own web pages, see the [examples](./examples) folder.
 
 ## Uses
 
@@ -141,4 +145,4 @@ Perhaps, if I have time:
 
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 
--   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS
+-   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS.
