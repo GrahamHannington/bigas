@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<title>Burger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script type="module">
+import * as BigAs from "../bigas.js"
+BigAs.formatSVGElementsByClassName('bigas')
+</script>
+<link href="../style.css" rel="stylesheet"/>
+<style>
+.bigas {
+  display: block;
+}
+.burger {
+  width: 50%;
+}
+.burger * {
+  margin-top: -5%;
+  margin-bottom: -5%;
+}
+.burger text {
+	text-transform: uppercase;
+}
+.burger > .lettuce {
+  margin-bottom: -15%;
+}
+.burger > .tomato {
+  transform: scale(1, 0.3);
+  margin-bottom: -22%;
+}
+.burger > .cheese {
+  transform: scale(1, 0.2);
+  margin-bottom: -17%;
+}
+.burger > .patty {
+  margin-bottom: -8%;
+}
+.bun text {
+	fill: #EE851C;
+}
+.tomato text {
+	fill: #EA0802;
+}
+.lettuce text {
+	fill: #A8E008;
+}
+.cheese text {
+	fill: #FFDD42;
+}
+.patty text {
+	fill: #792B1C;
+	font-family: serif;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<div class="burger">
+<svg class="bigas bun" data-text="Brioche Bun"/>
+<svg class="bigas lettuce" data-text="Lettuce"/>
+<svg class="bigas tomato" data-text="Tomato"/>
+<svg class="bigas cheese" data-text="Cheese"/>
+<svg class="bigas patty" data-text="Patty"/>
+<svg class="bigas bun" data-text="Brioche Bun"/>
+</div>
+</div>
+</body>
+</html>

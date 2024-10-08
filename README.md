@@ -20,6 +20,8 @@ where a slash (/) represents a line break.
 
 [SALE](https://grahamhannington.github.io/bigas?text=SALE&backgroundColor=red)
 
+See also the [examples](./examples) folder.
+
 ## URL parameters
 
 ### `backgroundColor`
