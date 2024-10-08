@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<title>Burger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="../images/favicon.ico" rel="shortcut icon"/>
+<script type="module">
+import * as BigAs from "../bigas.js"
+BigAs.formatSVGElementsByClassName('bigas')
+</script>
+<link href="../style.css" rel="stylesheet"/>
+<style>
+.bigas {
+  display: block;
+}
+.placard {
+  width: 30%;
+}
+.placard * {
+  width: 100%;
+  margin-top: -5%;
+  margin-bottom: -5%;
+}
+.placard text {
+  text-transform: uppercase;
+}
+.placard > .feed {
+  margin-bottom: -15%;
+}
+.placard > .me {
+  margin-bottom: -17%;
+}
+.placard > .pizza {
+}
+text {
+  font-weight: 700;
+}
+.feed text {
+  fill: #008C45;
+}
+.me text {
+  fill: #F4F9FF
+}
+.pizza text {
+  font-family: serif;
+  fill: #CD212A;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<div class="placard">
+<svg class="bigas feed" data-text="Feed"/>
+<svg class="bigas me" data-text="Me"/>
+<svg class="bigas pizza" data-text="Pizza"/>
+</div>
+</div>
+</body>
+</html>
