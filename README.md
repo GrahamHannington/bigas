@@ -43,7 +43,7 @@ https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&
 
 Excerpt of "All the World's a Stage" by William Shakespeare.
 
-https://grahamhannington.github.io/bigas?textAlign=left&text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything.
+https://grahamhannington.github.io/bigas?textAlign=left&text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything
 
 ### Road sign
 
@@ -57,8 +57,12 @@ https://grahamhannington.github.io/bigas?backgroundColor=red&text=SALE
 
 For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
 
-Some characters have a special meaning in URLs and must be "percent-encoded" when specified in the value of a URL parameter. For example, a hash (`#`), which you specify at the start of a hexadecimal RGB color value,
-must be percent-encoded as `%23`.
+Some characters have a special meaning in URLs and must be represented in some other form, such as "percent-encoding", when used in the value of a URL parameter. For example:
+
+| Character  | Percent-encoding |
+| ---------- | ---------------- |
+| Hash (`#`) | `%23`            |
+| Space      | `%20`            |
 
 Typically, if you enter a URL in the address bar of a web browser, you don't have to worry about percent-encoding; the browser does it for you.
 
@@ -136,7 +140,7 @@ Examples:
 
 `DON'T/PANIC`
 
-`Sans teeth,/sans eyes,/sans taste,/sans everything.`
+`Sans teeth,/sans eyes,/sans taste,/sans everything`
 
 
 ### `textAlign`
