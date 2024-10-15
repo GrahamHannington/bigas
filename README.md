@@ -204,3 +204,9 @@ Perhaps, if I have time:
 -   Background image, referenced by URL.
 
 -   Slideshow-in-a-URL: multiple sets of text, click/swipe to go forward/back, optional timed transitions for unattended shows, transition effects. In the meantime, there's [reveal.js](https://revealjs.com/).
+
+## History
+
+| Date       | Description               |
+| ---------- | --------------------------|
+| 2024-10-06 | First published on GitHub |
