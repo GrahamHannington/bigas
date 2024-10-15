@@ -92,15 +92,23 @@ See also: `width`
 
 ### `lineHeight`
 
+Text line height (vertical distance between each line of text).
+
 Default: `16`
 
+To set lines closer together, specify a value smaller than `16`. You can deliberately [overlap lines](https://grahamhannington.github.io/bigas/?text=Seeing%20double/Seeing%20double&lineHeight=3).
+
+To set lines exactly on top of each other, set the line height to `0`. Why would you want to do this? I dunno. [Just for fun](https://grahamhannington.github.io/bigas/?googleFont=IBM%20Plex%20Mono&text=8/;/&lineHeight=0)?
+
 ### `margin`
+
+Margin around the SVG element (that contains the text) within its parent (container) element.
 
 Default: `2vh`
 
 ### `text`
 
-The text that you want to display.
+Text that you want to display.
 
 Use a slash (`/`) to represent a line break.
 
@@ -116,6 +124,8 @@ Examples:
 
 
 ### `textAlign`
+
+Text horizontal alignment.
 
 Default: `center`
 
@@ -151,6 +161,8 @@ See also: `height`
 
 Essentially all Big As does is insert text in an SVG element, and then "shrinkwrap" the `viewBox` attribute of that SVG element to match the bounding box of the text.
 
+For an overview of this technique, see [my answer in Stack Overflow](https://stackoverflow.com/a/79065021/1334619).
+
 Some tricky parts (for me):
 
 -   Waiting for a Google font to be "active" before calculating the bounding box. I used [Web Font Loader](https://github.com/typekit/webfontloader).
@@ -168,3 +180,7 @@ Perhaps, if I have time:
 -   Optional *automatic* line wrapping that maximizes the font size for the specified text. This was a suggestion from my 11yo son. For now, I've set it aside as *too hard*.
 
 -   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
+
+-   Support escaped Unicode characters in the text.
+
+-   Background image, referenced by URL.
