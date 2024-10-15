@@ -37,19 +37,24 @@ For details on using Big As in your own web pages, see the [examples](./examples
 
 See also the [examples](./examples) folder.
 
-## URL parameters
+## Parameters
+
+For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
+
+Some characters have a special meaning in URLs and must be "percent-encoded" when specified in the value of a URL parameter. For example, a hash (`#`), which you specify at the start of a hexadecimal RGB color value,
+must be percent-encoded as `%23`.
+
+Typically, if you enter a URL in the address bar of a web browser, you don't have to worry about percent-encoding; the browser does it for you.
 
 ### `backgroundColor`
 
-Sets the background color of the page body.
+Background color of the page body.
 
 Default: `#000000` (black)
 
-Example hex RGB value:
+Example hex RGB value with a percent-encoded hash (`#` represented as `%23`):
 
 `%23009900`
-
-where `%23` is a percent-encoded hash (`#`)
 
 Example name value:
 
