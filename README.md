@@ -21,21 +21,37 @@ For details on using Big As in your own web pages, see the [examples](./examples
 
 ## Examples
 
-[DON'T PANIC](https://grahamhannington.github.io/bigas?text=DON%27T/PANIC&googleFont=Bungee%20Inline&backgroundColor=%23336633)
+### DON'T PANIC
 
-[YES](https://grahamhannington.github.io/bigas/?text=YES&fontWeight=700&backgroundColor=green)
+https://grahamhannington.github.io/bigas?googleFont=Bungee%20Inline&backgroundColor=%23336633&text=DON%27T/PANIC
 
-[NO](https://grahamhannington.github.io/bigas/?text=NO&fontWeight=700&backgroundColor=red)
+### YES
 
-[GO AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO%20AWAY) (or words of your choice to that effect)
+https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=green&text=YES
 
-[Sans teeth, etc.](https://grahamhannington.github.io/bigas?text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything.&textAlign=left) (excerpt of "All the World's a Stage" by William Shakespeare)
+### NO
 
-[Road sign](https://grahamhannington.github.io/bigas?text=Turn%20right/onto/Hamersley%20Road&googleFont=Overpass&backgroundColor=%23305441&textAlign=left)
+https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=red&text=NO
 
-[SALE](https://grahamhannington.github.io/bigas?text=SALE&backgroundColor=red)
+### GO AWAY
 
-See also the [examples](./examples) folder.
+Or words of your choice to that effect.
+
+https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO%20AWAY
+
+### Sans teeth, etc.
+
+Excerpt of "All the World's a Stage" by William Shakespeare.
+
+https://grahamhannington.github.io/bigas?textAlign=left&text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything.
+
+### Road sign
+
+https://grahamhannington.github.io/bigas?textAlign=left&text=Turn%20right/onto/Hamersley%20Road&googleFont=Overpass&backgroundColor=%23305441
+
+### SALE
+
+https://grahamhannington.github.io/bigas?backgroundColor=red&text=SALE
 
 ## Parameters
 
@@ -184,3 +200,5 @@ Perhaps, if I have time:
 -   Support escaped Unicode characters in the text.
 
 -   Background image, referenced by URL.
+
+-   Slideshow-in-a-URL: multiple sets of text, click/swipe to go forward/back, optional timed transitions for unattended shows, transition effects. In the meantime, there's [reveal.js](https://revealjs.com/).
