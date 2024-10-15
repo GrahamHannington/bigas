@@ -27,7 +27,7 @@ For details on using Big As in your own web pages, see the [examples](./examples
 
 [NO](https://grahamhannington.github.io/bigas/?text=NO&fontWeight=700&backgroundColor=red)
 
-[GO AWAY](https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=red&text=GO/AWAY) (or words of your choice to that effect)
+[GO AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO AWAY) (or words of your choice to that effect)
 
 [Sans teeth, etc.](https://grahamhannington.github.io/bigas?text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything.&textAlign=left) (excerpt of "All the World's a Stage" by William Shakespeare)
 
@@ -69,7 +69,21 @@ Example: `italic`
 
 ### `googleFont`
 
-Google Fonts font family name.
+[Google font](https://fonts.google.com/) family name.
+
+Example: [`Bungee Inline`](https://fonts.google.com/specimen/Bungee+Inline)
+
+### `height`
+
+Height of the SVG element (that contains the text) within its parent (container) element.
+
+Default: `100%`
+
+Example: `50%`
+
+See also: `width`
+
+
 
 ### `lineHeight`
 
@@ -118,17 +132,15 @@ Examples:
 
 `#CC8899`
 
-### `height`
-
-Default: `100%`
-
-Example: `50%`
-
 ### `width`
 
+Width of the SVG element (that contains the text) within its parent (container) element.
+
 Default: `100%`
 
 Example: `50%`
+
+See also: `height`
 
 ## Developer notes
 
@@ -137,6 +149,7 @@ Essentially all Big As does is insert text in an SVG element, and then "shrinkwr
 Some tricky parts (for me):
 
 -   Waiting for a Google font to be "active" before calculating the bounding box. I used [Web Font Loader](https://github.com/typekit/webfontloader).
+
 -   Conditionally synchronously loading the Web Font Loader script. The script is loaded only if the user specifies a Google font.
 
 ## To do
@@ -146,3 +159,7 @@ Perhaps, if I have time:
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 
 -   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS.
+
+-   Optional *automatic* line wrapping that maximizes the font size for the specified text. This was a suggestion from my 11yo son. For now, I've set it aside as *too hard*.
+
+-   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
