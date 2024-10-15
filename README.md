@@ -106,9 +106,7 @@ Default: `100%`
 
 Example: `50%`
 
-See also: `width`
-
-
+See also: [`width`](#width)
 
 ### `lineHeight`
 
@@ -175,7 +173,7 @@ Default: `100%`
 
 Example: `50%`
 
-See also: `height`
+See also: [`height`](#height)
 
 ## Developer notes
 
