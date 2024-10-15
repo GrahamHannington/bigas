@@ -57,6 +57,13 @@ function styleText (svgElement, params) {
   if (params.margin) svgElement.style.margin = params.margin
   if (params.width) svgElement.style.width = params.width
   if (params.height) svgElement.style.height = params.height
+  // Apply text fill
+  if (params.textFill) {
+    for (const text of svgElement.children) {
+      text.style.fill = params.textFill
+    }
+  }
+  // Center text
   if (params.textAlign == 'center') {
     var maxTextWidth = 0
     var thisTextWidth = 0
@@ -69,7 +76,6 @@ function styleText (svgElement, params) {
     }
     // Shift narrower lines right, centering them relative to the widest line
     for (const text of svgElement.children) {
-      if (params.textFill) text.style.fill = params.textFill
       thisTextWidth = text.getBBox().width
       if (thisTextWidth < maxTextWidth) {
         text.setAttribute('dx', (maxTextWidth - thisTextWidth) / 2)
