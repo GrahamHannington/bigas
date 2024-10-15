@@ -27,7 +27,7 @@ For details on using Big As in your own web pages, see the [examples](./examples
 
 [NO](https://grahamhannington.github.io/bigas/?text=NO&fontWeight=700&backgroundColor=red)
 
-[GO AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO AWAY) (or words of your choice to that effect)
+[GO AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO%20AWAY) (or words of your choice to that effect)
 
 [Sans teeth, etc.](https://grahamhannington.github.io/bigas?text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything.&textAlign=left) (excerpt of "All the World's a Stage" by William Shakespeare)
 
