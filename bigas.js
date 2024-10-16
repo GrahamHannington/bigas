@@ -94,6 +94,7 @@ function styleText (svgElement, params) {
 function insertText (svgElement, params) {
   const svgNS = 'http://www.w3.org/2000/svg'
   const lineHeight = parseInt(params.lineHeight || '16')
+  params.text = convertCharRefsToChars(params.text)
   // Split text into lines
   var dy = 0
   params.text.split('/').forEach(function (line) {
@@ -117,6 +118,16 @@ function insertText (svgElement, params) {
   } else {
     styleText(svgElement, params)
   }
+}
+
+// In the input string, convert decimal character references (such as &#9884;) to actual characters
+function convertCharRefsToChars (str) {
+  const regex = /&#(\d+);/g
+  var result
+  result = str.replace(regex, function (_ , $1) {
+    return String.fromCharCode($1)
+  })
+  return result
 }
 
 export { formatSVGElementById, formatSVGElementsByClassName }

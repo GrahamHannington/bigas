@@ -53,16 +53,23 @@ https://grahamhannington.github.io/bigas?textAlign=left&text=Turn%20right/onto/H
 
 https://grahamhannington.github.io/bigas?backgroundColor=red&text=SALE
 
+### Do your best
+
+https://grahamhannington.github.io/bigas?backgroundColor=%23262661&googleFont=Nunito%20Sans&lineHeight=10&text=%26%239884%3B/dyb
+
 ## Parameters
 
 For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
 
-Some characters have a special meaning in URLs and must be represented in some other form, such as "percent-encoding", when used in the value of a URL parameter. For example:
+Some characters have a special meaning in URLs and must be encoded when used in the value of a URL parameter. For example:
 
-| Character  | Percent-encoding |
-| ---------- | ---------------- |
-| Hash (`#`) | `%23`            |
-| Space      | `%20`            |
+| Character                      | URL encoding     |
+| ------------------------------ | ---------------- |
+| Space                          | `%20`            |
+| Ampersand (`&amp;`)            | `%26`            |
+| Hash (`#`)                     | `%23`            |
+| Semicolon (`;`)                | `%3B`            |
+| Fleur-de-lis (&#9884;, U+269C) | `%26%239884%3B`  |
 
 Typically, if you enter a URL in the address bar of a web browser, you don't have to worry about percent-encoding; the browser does it for you.
 
@@ -198,8 +205,6 @@ Perhaps, if I have time:
 -   Optional *automatic* line wrapping that maximizes the font size for the specified text. This was a suggestion from my 11yo son. For now, I've set it aside as *too hard*.
 
 -   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
-
--   Support escaped Unicode characters in the text.
 
 -   Background image, referenced by URL.
 
