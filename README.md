@@ -208,7 +208,7 @@ Tricky for me:
 The method that Big As uses to get the bounding box of the text, `getBBox`,
 returns the bounding box of (what I'm going to call) the [body](https://en.wikipedia.org/wiki/Body_height_(typography))
 of the text, not the bounding box of the space actually occupied by the glyphs. In practice, this means that,
-in some cases, the bounding box is too big. For example, If the text consists only of lowercase characters with no
+in some cases, the bounding box is too big. For example, if the text consists only of lowercase characters with no
 ascenders or descenders (for example: "[ace](https://grahamhannington.github.io/bigas?text=ace)", "unceremonious"), then the bounding box does not tightly fit the letters.
 
 ## To do
