@@ -23,4 +23,5 @@ body {
 }
 text {
   fill: #FFFFFF;
+  paint-order: stroke;
 }

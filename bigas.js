@@ -5,13 +5,15 @@ function getParamsFromURL () {
   const urlParams = new URLSearchParams(window.location.search)
   var params = {}
   params.text = urlParams.get('text') || 'Big As/Possible'
-  params.textFill = urlParams.get('textFill') || '#FFFFFF'
-  params.backgroundColor = urlParams.get('backgroundColor') || '#000000'
+  params.background = urlParams.get('background') || '#000000'
   params.fontWeight = urlParams.get('fontWeight') || 'normal'
   params.fontStyle = urlParams.get('fontStyle') || 'normal'
   params.fontWeight = urlParams.get('fontWeight') || '400'
   params.googleFont = urlParams.get('googleFont')
   params.textAlign = urlParams.get('textAlign') || 'center' // left
+  params.textFill = urlParams.get('textFill') || '#FFFFFF'
+  params.textStroke = urlParams.get('textStroke')
+  params.textStrokeWidth = urlParams.get('textStrokeWidth')
   params.lineHeight = urlParams.get('lineHeight')
   params.margin = urlParams.get('margin') || '2vh'
   params.width = urlParams.get('width') || '100%'
@@ -61,11 +63,13 @@ function styleText (svgElement, params) {
   if (params.margin) svgElement.style.margin = params.margin
   if (params.width) svgElement.style.width = params.width
   if (params.height) svgElement.style.height = params.height
-  // Apply text fill
-  if (params.textFill) {
-    for (const text of svgElement.children) {
-      text.style.fill = params.textFill
-    }
+  // Apply background to parent (container) element
+  if (params.background) svgElement.parentElement.style.background = params.background
+  // Apply text styles
+  for (const text of svgElement.children) {
+    if (params.textFill) text.style.fill = params.textFill
+    if (params.textStroke) text.style.stroke = params.textStroke
+    if (params.textStrokeWidth) text.style.strokeWidth = params.textStrokeWidth
   }
   // Center text
   if (params.textAlign == 'center') {
@@ -119,7 +123,6 @@ function insertText (svgElement, params) {
     svgElement.appendChild(svgText).textContent = line
     dy += lineHeight
   })
-  document.body.style.backgroundColor = params.backgroundColor
   if (params.googleFont) {
     // Wait until Google Font is active before styling text
     WebFont.load({

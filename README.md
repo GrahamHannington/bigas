@@ -10,7 +10,7 @@ as a `text` parameter in the query string.
 
 A slash (/) in the text represents a line break. If you want line breaks, you need to specify them. ("Big As don't wrap.")
 
-You can also specify other [parameters](#parameters) such as the background color or the name of a Google font to use.
+You can also specify other [parameters](#parameters) such as the background color or image, or the name of a Google font to use.
 
 **Tip:** Big As is best displayed in your browser's full-screen mode (for example, in a desktop browser, press F11).
 
@@ -28,21 +28,21 @@ The query strings shown here are links to complete URLs. To show the example, cl
 
 ### DON'T PANIC
 
-[googleFont=Bungee+Inline&backgroundColor=%23336633&text=DON%27T/PANIC](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&backgroundColor=%23336633&text=DON%27T/PANIC)
+[googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC)
 
 ### YES
 
-[fontWeight=700&backgroundColor=green&text=YES](https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=green&text=YES)
+[fontWeight=700&background=green&text=YES](https://grahamhannington.github.io/bigas/?fontWeight=700&background=green&text=YES)
 
 ### NO
 
-[fontWeight=700&backgroundColor=red&text=NO](https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=red&text=NO)
+[fontWeight=700&background=red&text=NO](https://grahamhannington.github.io/bigas/?fontWeight=700&background=red&text=NO)
 
 ### GO AWAY
 
 Or words of your choice to that effect.
 
-[googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO+AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO+AWAY)
+[googleFont=Creepster&textFill=darkred&background=black&text=GO+AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&background=black&text=GO+AWAY)
 
 ### Sans teeth, etc.
 
@@ -52,15 +52,19 @@ Excerpt of "All the World's a Stage" by William Shakespeare.
 
 ### Road sign
 
-[textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&backgroundColor=%23305441](https://grahamhannington.github.io/bigas?textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&backgroundColor=%23305441)
+[textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&background=%23305441](https://grahamhannington.github.io/bigas?textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&background=%23305441)
 
 ### SALE
 
-[backgroundColor=red&text=SALE](https://grahamhannington.github.io/bigas?backgroundColor=red&text=SALE)
+[background=red&text=SALE](https://grahamhannington.github.io/bigas?background=red&text=SALE)
+
+### Hello, world!
+
+[textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!](https://grahamhannington.github.io/bigas?textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!)
 
 ### Do your best
 
-[backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
+[background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
 
 ### ace
 
@@ -86,9 +90,11 @@ Some characters have a special meaning in URLs and must be encoded when used in 
 
 Depending on your browser, you might not have to worry about URL encoding some characters, such as spaces; the browser does it for you.
 
-### `backgroundColor`
+### `background`
 
-Background color of the page body.
+Background color and/or images.
+
+Can be any value supported by the [`background`](https://developer.mozilla.org/en-US/docs/Web/CSS/background) shorthand CSS property.
 
 Default: `#000000` (black)
 
@@ -99,6 +105,10 @@ Example hex RGB value with a percent-encoded hash (`#` represented as `%23`):
 Example name value:
 
 `red`
+
+Example image:
+
+`center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)`
 
 ### `fontWeight`
 
@@ -185,6 +195,26 @@ Examples:
 
 `#CC8899`
 
+### `textStroke`
+
+Text outline color. (In SVG text, this is known as the stroke color.)
+
+Default: none
+
+Example:
+
+`#FFFFFF` (white)
+
+### `textStrokeWidth`
+
+Text outline width. (In SVG text, this is known as the stroke width.)
+
+Default: none
+
+Example:
+
+`0.3`
+
 ### `trimBottom`
 
 Trim the bottom edge of the text bounding box.
@@ -246,8 +276,6 @@ Perhaps, if I have time:
 -   Optional *automatic* line wrapping that maximizes the font size for the specified text. This was a suggestion from my 11yo son. For now, I've set it aside as *too hard*.
 
 -   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
-
--   Background image, referenced by URL.
 
 -   Slideshow-in-a-URL: multiple sets of text, click/swipe to go forward/back, optional timed transitions for unattended shows, transition effects. In the meantime, there's [reveal.js](https://revealjs.com/).
 
