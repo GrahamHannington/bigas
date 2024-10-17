@@ -16,6 +16,8 @@ function getParamsFromURL () {
   params.margin = urlParams.get('margin') || '2vh'
   params.width = urlParams.get('width') || '100%'
   params.height = urlParams.get('height') || '100%'
+  params.trimTop = parseInt(urlParams.get('trimTop')) || 0
+  params.trimBottom = parseInt(urlParams.get('trimBottom')) || 0
   return params
 }
 
@@ -51,6 +53,8 @@ function loadExternalScript (src) {
 
 function styleText (svgElement, params) {
   params.textAlign ??= 'center'
+  params.trimTop ??= 0
+  params.trimBottom ??= 0
   if (params.googleFont) svgElement.style.fontFamily = params.googleFont
   if (params.fontWeight) svgElement.style.fontWeight = params.fontWeight
   if (params.fontStyle) svgElement.style.fontStyle = params.fontStyle
@@ -83,10 +87,19 @@ function styleText (svgElement, params) {
     }
   }
   // Shrinkwrap the SVG viewBox to the bounding box of its contents
-  const bbox = svgElement.getBBox()
-  // Set height to 1 unit larger than bounding box, to avoid cropping
-  const height = bbox.height + 1
-  svgElement.setAttribute('viewBox', `${bbox.x} ${bbox.y} ${bbox.width} ${height}`)
+  var bbox = svgElement.getBBox()
+  var viewBox = {}
+  // Initialize viewBox from bounding box
+  viewBox.x = bbox.x
+  viewBox.y = bbox.y
+  viewBox.width = bbox.width
+  viewBox.height = bbox.height
+  // Set viewBox height to 1 unit larger than bounding box, to avoid cropping
+  viewBox.height += 1
+  // Apply trim parameters
+  viewBox.y += params.trimTop
+  viewBox.height -= params.trimTop + params.trimBottom
+  svgElement.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`)
   // Make SVG element visible
   svgElement.style.visibility = 'visible'
 }

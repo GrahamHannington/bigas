@@ -62,6 +62,12 @@ Excerpt of "All the World's a Stage" by William Shakespeare.
 
 [backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
 
+#### ace
+
+This example demonstrates using the `trimTop` and `trimBottom` parameters to trim the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
+
+[trimTop=4&trimBottom=3&text=ace](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
+
 ## Parameters
 
 For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
@@ -179,6 +185,22 @@ Examples:
 
 `#CC8899`
 
+### `trimBottom`
+
+Trim the bottom edge of the text bounding box.
+
+Default: `0`
+
+Example: `2`
+
+### `trimTop`
+
+Trim the top edge of the text bounding box.
+
+Default: `0`
+
+Example: `2`
+
 ### `width`
 
 Width of the SVG element (that contains the text) within its parent (container) element.
@@ -211,6 +233,8 @@ of the text, not the bounding box of the space actually occupied by the glyphs. 
 in some cases, the bounding box is too big. For example, if the text consists only of lowercase characters with no
 ascenders or descenders (for example: "[ace](https://grahamhannington.github.io/bigas?text=ace)", "unceremonious"), then the bounding box does not tightly fit the letters.
 
+As a manual workaround (I acknowledge that this is a kludge), use the [`trimTop`](#trimtop) and [`trimBottom`]((#trimbottom)) parameters to trim the bounding box. 
+
 ## To do
 
 Perhaps, if I have time:
@@ -226,8 +250,6 @@ Perhaps, if I have time:
 -   Background image, referenced by URL.
 
 -   Slideshow-in-a-URL: multiple sets of text, click/swipe to go forward/back, optional timed transitions for unattended shows, transition effects. In the meantime, there's [reveal.js](https://revealjs.com/).
-
--   Add parameters to manually trim the bounding box.
 
 ## History
 
