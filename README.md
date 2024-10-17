@@ -2,76 +2,83 @@
 
 Big As is a web page that displays text as big as possible.
 
-You specify the text to display as a URL parameter:
+You specify the text to display in the web address:
 
 https://grahamhannington.github.io/bigas?text=Your/text/here
 
-where a slash (/) represents a line break.
+as a `text` parameter in the query string.
 
-You can also specify various other parameters in the URL, such as the background color, or the name of a Google font to use.
+A slash (/) in the text represents a line break. If you want line breaks, you need to specify them. ("Big As don't wrap.")
+
+You can also specify other [parameters](#parameters) such as the background color or the name of a Google font to use.
 
 **Tip:** Big As is best displayed in your browser's full-screen mode (for example, in a desktop browser, press F11).
 
-For details on using Big As in your own web pages, see the [examples](./examples) folder.
+Web developers: you can use Big As in your own web pages to display text as big as possible in any container element. For details, see the [examples](./examples) folder.
 
 ## Uses
 
 - You're in an airport arrivals hall waiting to meet someone you've never met, and you forgot to tell them to look for the person wearing a blue carnation in their lapel.
+
 - Any occasion that you want to display text as big as possible on your device.
 
 ## Examples
 
+The query strings shown here are links to complete URLs. To show the example, click the link.
+
 ### DON'T PANIC
 
-https://grahamhannington.github.io/bigas?googleFont=Bungee%20Inline&backgroundColor=%23336633&text=DON%27T/PANIC
+[googleFont=Bungee+Inline&backgroundColor=%23336633&text=DON%27T/PANIC](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&backgroundColor=%23336633&text=DON%27T/PANIC)
 
 ### YES
 
-https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=green&text=YES
+[fontWeight=700&backgroundColor=green&text=YES](https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=green&text=YES)
 
 ### NO
 
-https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=red&text=NO
+[fontWeight=700&backgroundColor=red&text=NO](https://grahamhannington.github.io/bigas/?fontWeight=700&backgroundColor=red&text=NO)
 
 ### GO AWAY
 
 Or words of your choice to that effect.
 
-https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO%20AWAY
+[googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO+AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&backgroundColor=black&text=GO+AWAY)
 
 ### Sans teeth, etc.
 
 Excerpt of "All the World's a Stage" by William Shakespeare.
 
-https://grahamhannington.github.io/bigas?textAlign=left&text=Sans%20teeth,/sans%20eyes,/sans%20taste,/sans%20everything
+[textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything](https://grahamhannington.github.io/bigas?textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything)
 
 ### Road sign
 
-https://grahamhannington.github.io/bigas?textAlign=left&text=Turn%20right/onto/Hamersley%20Road&googleFont=Overpass&backgroundColor=%23305441
+[textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&backgroundColor=%23305441](https://grahamhannington.github.io/bigas?textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&backgroundColor=%23305441)
 
 ### SALE
 
-https://grahamhannington.github.io/bigas?backgroundColor=red&text=SALE
+[backgroundColor=red&text=SALE](https://grahamhannington.github.io/bigas?backgroundColor=red&text=SALE)
 
 ### Do your best
 
-https://grahamhannington.github.io/bigas?backgroundColor=%23262661&googleFont=Nunito%20Sans&lineHeight=10&text=%26%239884%3B/dyb
+[backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
 
 ## Parameters
 
 For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
 
-Some characters have a special meaning in URLs and must be encoded when used in the value of a URL parameter. For example:
+Some characters have a special meaning in URLs and must be encoded when used in the value of a parameter. For example:
 
 | Character                      | URL encoding     |
 | ------------------------------ | ---------------- |
-| Space                          | `%20`            |
-| Ampersand (`&amp;`)            | `%26`            |
+| Space                          | `+` (plus sign) or<br>`%20`|
+| Ampersand (`&`)                | `%26`            |
 | Hash (`#`)                     | `%23`            |
 | Semicolon (`;`)                | `%3B`            |
-| Fleur-de-lis (&#9884;, U+269C) | `%26%239884%3B`  |
+| Fleur-de-lis (&#9884;, U+269C) | `%26%23x269C%3B` (URL-encoded numeric character reference `&#x269C;`) or<br>`%26%239884%3B` (URL-encoded numeric character reference `&#9884;`) or<br>`%E2%9A%9C` (UTF-8 encoding)|
 
-Typically, if you enter a URL in the address bar of a web browser, you don't have to worry about percent-encoding; the browser does it for you.
+**Note:** Big As contains code to interpret numeric character references. Browsers typically don't natively support this format in URL parameters.
+
+Depending on your browser, you might not have to worry about URL encoding some characters, such as spaces; the browser does it for you.
 
 ### `backgroundColor`
 
@@ -121,9 +128,9 @@ Text line height (vertical distance between each line of text).
 
 Default: `16`
 
-To set lines closer together, specify a value smaller than `16`. You can deliberately [overlap lines](https://grahamhannington.github.io/bigas/?text=Seeing%20double/Seeing%20double&lineHeight=3).
+To set lines closer together, specify a value smaller than `16`. You can deliberately [overlap lines](https://grahamhannington.github.io/bigas/?text=Seeing+double/Seeing+double&lineHeight=3).
 
-To set lines exactly on top of each other, set the line height to `0`. Why would you want to do this? I dunno. [Just for fun](https://grahamhannington.github.io/bigas/?googleFont=IBM%20Plex%20Mono&text=8/;/&lineHeight=0)?
+To set lines exactly on top of each other, set the line height to `0`. Why would you want to do this? I dunno. [Just for fun](https://grahamhannington.github.io/bigas/?googleFont=IBM+Plex+Mono&text=8/;/&lineHeight=0)?
 
 ### `margin`
 
@@ -184,15 +191,25 @@ See also: [`height`](#height)
 
 ## Developer notes
 
+Big As is tiny.
 Essentially all Big As does is insert text in an SVG element, and then "shrinkwrap" the `viewBox` attribute of that SVG element to match the bounding box of the text.
-
 For an overview of this technique, see [my answer in Stack Overflow](https://stackoverflow.com/a/79065021/1334619).
 
-Some tricky parts (for me):
+### Tricky parts
+
+Tricky for me:
 
 -   Waiting for a Google font to be "active" before calculating the bounding box. I used [Web Font Loader](https://github.com/typekit/webfontloader).
 
 -   Conditionally synchronously loading the Web Font Loader script. The script is loaded only if the user specifies a Google font.
+
+### Big As doesn't strictly live up to its name
+
+The method that Big As uses to get the bounding box of the text, `getBBox`,
+returns the bounding box of (what I'm going to call) the [body](https://en.wikipedia.org/wiki/Body_height_(typography))
+of the text, not the bounding box of the space actually occupied by the glyphs. In practice, this means that,
+in some cases, the bounding box is too big. For example, If the text consists only of lowercase characters with no
+ascenders or descenders (for example: "[ace](https://grahamhannington.github.io/bigas?text=ace)", "unceremonious"), then the bounding box does not tightly fit the letters.
 
 ## To do
 
@@ -209,6 +226,8 @@ Perhaps, if I have time:
 -   Background image, referenced by URL.
 
 -   Slideshow-in-a-URL: multiple sets of text, click/swipe to go forward/back, optional timed transitions for unattended shows, transition effects. In the meantime, there's [reveal.js](https://revealjs.com/).
+
+-   Add parameters to manually trim the bounding box.
 
 ## History
 

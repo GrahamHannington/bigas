@@ -122,10 +122,14 @@ function insertText (svgElement, params) {
 
 // In the input string, convert decimal character references (such as &#9884;) to actual characters
 function convertCharRefsToChars (str) {
-  const regex = /&#(\d+);/g
+  var regex = /&#(\d+);/g
   var result
   result = str.replace(regex, function (_ , $1) {
     return String.fromCharCode($1)
+  })
+  regex = /&#x([A-Fa-f0-9]+);/g
+  result = result.replace(regex, function (_ , $1) {
+    return String.fromCharCode(Number('0x' + $1))
   })
   return result
 }
