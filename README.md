@@ -62,9 +62,9 @@ Excerpt of "All the World's a Stage" by William Shakespeare.
 
 [backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?backgroundColor=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
 
-#### ace
+### ace
 
-This example demonstrates using the `trimTop` and `trimBottom` parameters to trim the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
+This example demonstrates trimming the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
 
 [trimTop=4&trimBottom=3&text=ace](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
 
