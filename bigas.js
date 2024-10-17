@@ -20,6 +20,8 @@ function getParamsFromURL () {
   params.height = urlParams.get('height') || '100%'
   params.trimTop = parseInt(urlParams.get('trimTop')) || 0
   params.trimBottom = parseInt(urlParams.get('trimBottom')) || 0
+  params.title = urlParams.get('title')
+  if (params.title) document.title = params.title
   return params
 }
 
