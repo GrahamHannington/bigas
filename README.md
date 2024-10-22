@@ -10,6 +10,14 @@ as a `text` parameter in the query string.
 
 A slash (/) in the text represents a line break. If you want line breaks, you need to specify them. ("Big As don't wrap.")
 
+Two consecutive slashes (//) represent a *page break*:
+
+https://grahamhannington.github.io/bigas?text=Basement//Medicine//Pavement//Government//Trench/Coat
+
+To page forward, swipe left or press Enter, Page Down, down arrow (&downarrow;), or right arrow (&rightarrow;).
+
+To page back, swipe right or press Page Up, up arrow (&uparrow;), or left arrow (&leftarrow;).
+
 You can also specify other [parameters](#parameters) such as the background color or image, or the name of a Google font to use.
 
 **Tip:** Big As is best displayed in your browser's full-screen mode (for example, in a desktop browser, press F11).
@@ -19,6 +27,8 @@ Web developers: you can use Big As in your own web pages to display text as big 
 ## Uses
 
 - You're in an airport arrivals hall waiting to meet someone you've never met, and you forgot to tell them to look for the person wearing a blue carnation in their lapel.
+
+- Learning to read sight words.
 
 - Any occasion that you want to display text as big as possible on your device.
 
@@ -71,6 +81,12 @@ Excerpt of "All the World's a Stage" by William Shakespeare.
 This example demonstrates trimming the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
 
 [trimTop=4&trimBottom=3&text=ace](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
+
+### Sight words
+
+For learning to read.
+
+[background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood](https://grahamhannington.github.io/bigas?background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood)
 
 ## Parameters
 
@@ -283,7 +299,9 @@ Perhaps, if I have time:
 
 -   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
 
--   Slideshow-in-a-URL: multiple sets of text, click/swipe to go forward/back, optional timed transitions for unattended shows, transition effects. In the meantime, there's [reveal.js](https://revealjs.com/).
+-   Animated page transitions
+
+-   Automated timed paging
 
 ## History
 

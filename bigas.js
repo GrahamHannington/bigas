@@ -1,50 +1,115 @@
+import { getState, setState, getStateProperty, setStateProperty } from './modules/state.js'
+import { log } from './modules/log.js'
+
+const pageSeparator = '//'
+const lineSeparator = '/'
 const urlWebFontLoader = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js'
 
-// Get parameters from URL and set default values
-function getParamsFromURL () {
+// Set state properties from parameters in the URL query string
+function setStateFromURLParams () {
   const urlParams = new URLSearchParams(window.location.search)
-  var params = {}
-  params.text = urlParams.get('text') || 'Big As/Possible'
-  params.background = urlParams.get('background') || '#000000'
-  params.fontWeight = urlParams.get('fontWeight') || 'normal'
-  params.fontStyle = urlParams.get('fontStyle') || 'normal'
-  params.fontWeight = urlParams.get('fontWeight') || '400'
-  params.googleFont = urlParams.get('googleFont')
-  params.textAlign = urlParams.get('textAlign') || 'center' // left
-  params.textFill = urlParams.get('textFill') || '#FFFFFF'
-  params.textStroke = urlParams.get('textStroke')
-  params.textStrokeWidth = urlParams.get('textStrokeWidth')
-  params.lineHeight = urlParams.get('lineHeight')
-  params.margin = urlParams.get('margin') || '2vh'
-  params.width = urlParams.get('width') || '100%'
-  params.height = urlParams.get('height') || '100%'
-  params.trimTop = parseInt(urlParams.get('trimTop')) || 0
-  params.trimBottom = parseInt(urlParams.get('trimBottom')) || 0
-  params.title = urlParams.get('title')
-  if (params.title) document.title = params.title
-  return params
+  const state = getState()
+  const newState = {}
+  // Iterate over URL parameters
+  for (const [key, value] of urlParams) {
+    // If the URL parameter name matches a state property, set the state property
+    if (Object.hasOwn(state, key)) {
+      // Coerce the URL parameter value (a string or null) to the correct type, based on the type of the existing state property
+      switch (typeof state[key]) {
+      case 'string':
+      case 'object':
+        newState[key] = value
+        break
+      case 'number':
+        newState[key] = Number(value)
+        break
+      }
+    } else {
+      log.warn('Unrecognized parameter in URL query string: ' + key)
+    }
+  }
+  setState(newState)
 }
 
-function formatSVGElementById (svgElementId, useURLParms) {
+function formatSVGElementById (svgElementId) {
   const svgElement = document.getElementById(svgElementId)
-  var params = {}
-  if (useURLParms) {
-	params = getParamsFromURL()
-	// If a Google Font is specified, synchronously load the Web Font Loader script
-	if (params.googleFont) {
-	  loadExternalScript(urlWebFontLoader)
+  const state = getState()
+  // If a Google Font is specified, synchronously load the Web Font Loader script
+  if (state.googleFont) {
+ 	  loadExternalScript(urlWebFontLoader)
 	}
-  } else {
-    params.text = svg.dataset.text
+  window.addEventListener('load', () => {insertText(svgElement)})
+  
+  // svgElement.parentElement.addEventListener('keyup', (event) => {
+  window.addEventListener('keyup', (event) => {
+    const keyHandler = {
+      'Enter': nextPage,
+      'ArrowRight': nextPage,
+      'ArrowDown': nextPage,
+      'PageDown': nextPage,
+      'ArrowUp': prevPage,
+      'ArrowLeft': prevPage,
+      'ArrowUp': prevPage,
+      'PageUp': prevPage
+    }[event.key]
+    keyHandler?.(svgElement)
+  })
+  
+  let touchstartX = 0
+  let touchstartY = 0
+  let touchendX = 0
+  let touchendY = 0
+  
+  svgElement.parentElement.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX
+    touchstartY = event.changedTouches[0].screenY
+  }, {passive: true})
+
+  svgElement.parentElement.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX
+    touchendY = event.changedTouches[0].screenY
+    handleSwipe(svgElement)
+  }, {passive: true})
+
+  function handleSwipe (svgElement) {
+    if (touchendX < touchstartX) {
+      nextPage (svgElement)
+    }
+    
+    if (touchendX > touchstartX) {
+      prevPage (svgElement)
+    }
   }
-  window.addEventListener('load', () => {insertText(svgElement, params)})
 }
+
+function nextPage (svgElement) {
+  const state = getState()
+  const pages = state.text.split(pageSeparator).length
+  if (state.currentPage < pages) {
+    setStateProperty('currentPage', state.currentPage + 1)
+  } else {
+    // If we're already at the last page, wrap around to the first page
+    setStateProperty('currentPage', 1)
+  }
+  insertText(svgElement)
+}
+
+function prevPage (svgElement) {
+  const state = getState()
+  const pages = state.text.split(pageSeparator).length
+  if (state.currentPage > 1) {
+    setStateProperty('currentPage', state.currentPage - 1)
+  } else {
+    // If we're already at the first page, wrap around to the last page
+    setStateProperty('currentPage', pages)
+  }
+  insertText(svgElement)
+}
+
 
 function formatSVGElementsByClassName (className) {
   ;[...document.getElementsByClassName(className)].forEach(element => {
-    let params = {}
-    params.text = element.dataset.text
-    window.addEventListener('load', () => {insertText(element, params)} )
+    window.addEventListener('load', () => {insertText(element)} )
   })
 }
 
@@ -55,26 +120,24 @@ function loadExternalScript (src) {
   document.getElementsByTagName('head')[0].appendChild(scriptElement)
 }
 
-function styleText (svgElement, params) {
-  params.textAlign ??= 'center'
-  params.trimTop ??= 0
-  params.trimBottom ??= 0
-  if (params.googleFont) svgElement.style.fontFamily = params.googleFont
-  if (params.fontWeight) svgElement.style.fontWeight = params.fontWeight
-  if (params.fontStyle) svgElement.style.fontStyle = params.fontStyle
-  if (params.margin) svgElement.style.margin = params.margin
-  if (params.width) svgElement.style.width = params.width
-  if (params.height) svgElement.style.height = params.height
+function styleText (svgElement) {
+  const state = getState()
+  if (state.googleFont) svgElement.style.fontFamily = state.googleFont
+  if (state.fontWeight) svgElement.style.fontWeight = state.fontWeight
+  if (state.fontStyle) svgElement.style.fontStyle = state.fontStyle
+  if (state.margin) svgElement.style.margin = state.margin
+  if (state.width) svgElement.style.width = state.width
+  if (state.height) svgElement.style.height = state.height
   // Apply background to parent (container) element
-  if (params.background) svgElement.parentElement.style.background = params.background
+  if (state.background) svgElement.parentElement.style.background = state.background
   // Apply text styles
   for (const text of svgElement.children) {
-    if (params.textFill) text.style.fill = params.textFill
-    if (params.textStroke) text.style.stroke = params.textStroke
-    if (params.textStrokeWidth) text.style.strokeWidth = params.textStrokeWidth
+    if (state.textFill) text.style.fill = state.textFill
+    if (state.textStroke) text.style.stroke = state.textStroke
+    if (state.textStrokeWidth) text.style.strokeWidth = state.textStrokeWidth
   }
   // Center text
-  if (params.textAlign == 'center') {
+  if (state.textAlign == 'center') {
     var maxTextWidth = 0
     var thisTextWidth = 0
     // Get width of widest line
@@ -92,9 +155,16 @@ function styleText (svgElement, params) {
       }
     }
   }
-  // Shrinkwrap the SVG viewBox to the bounding box of its contents
-  var bbox = svgElement.getBBox()
-  var viewBox = {}
+  fitSVGViewBoxToBBox (svgElement)
+  // Make SVG element visible
+  svgElement.style.visibility = 'visible'
+}
+
+// Shrinkwrap the SVG viewBox to the bounding box of its contents
+function fitSVGViewBoxToBBox (svgElement) {
+  const state = getState()
+  const bbox = svgElement.getBBox()
+  const viewBox = {}
   // Initialize viewBox from bounding box
   viewBox.x = bbox.x
   viewBox.y = bbox.y
@@ -103,38 +173,49 @@ function styleText (svgElement, params) {
   // Set viewBox height to 1 unit larger than bounding box, to avoid cropping
   viewBox.height += 1
   // Apply trim parameters
-  viewBox.y += params.trimTop
-  viewBox.height -= params.trimTop + params.trimBottom
+  viewBox.y += state.trimTop
+  viewBox.height -= state.trimTop + state.trimBottom
   svgElement.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`)
-  // Make SVG element visible
-  svgElement.style.visibility = 'visible'
 }
 
-function insertText (svgElement, params) {
+function insertText (svgElement) {
   const svgNS = 'http://www.w3.org/2000/svg'
-  const lineHeight = parseInt(params.lineHeight || '16')
-  params.text = convertCharRefsToChars(params.text)
+  const state = getState()
+  var text
+  // If the SVG element specifies text in its own data-text attribute, use it
+	if (svgElement.dataset.text) {
+	  text = svgElement.dataset.text
+  } else {
+    // Otherwise, get the current page of text from the state text property
+    text = state.text.split(pageSeparator)[state.currentPage - 1]
+  }
+  // Unescape any character references in the text
+  text = convertCharRefsToChars(text)
   // Split text into lines
   var dy = 0
-  params.text.split('/').forEach(function (line) {
+  // Make SVG element visible
+  svgElement.style.visibility = 'hidden'
+  // Remove any existing child elements from the SVG element
+  svgElement.querySelectorAll('*').forEach(child => child.remove())
+  text.split(lineSeparator).forEach(function (line) {
     // Put each line of text into its own SVG <text> element
     let svgText = document.createElementNS(svgNS, 'text')
     if (dy > 0) {
       svgText.setAttribute('dy', dy)
     }
     svgElement.appendChild(svgText).textContent = line
-    dy += lineHeight
+    dy += state.lineHeight
   })
-  if (params.googleFont) {
+  if (state.googleFont) {
     // Wait until Google Font is active before styling text
     WebFont.load({
       google: {
-        families: [params.googleFont + ':' + params.fontWeight]
+        families: [state.googleFont + ':' + state.fontWeight]
       },
-      fontactive: () => { styleText(svgElement, params) }
+      fontactive: () => { styleText(svgElement) }
     })
   } else {
-    styleText(svgElement, params)
+    styleText(svgElement)
   }
 }
 
@@ -152,4 +233,4 @@ function convertCharRefsToChars (str) {
   return result
 }
 
-export { formatSVGElementById, formatSVGElementsByClassName }
+export { formatSVGElementById, formatSVGElementsByClassName, setStateFromURLParams }

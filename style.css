@@ -20,6 +20,7 @@ body {
 /* Hide SVG to avoid flash of unstyled content */
 #svg {
   visibility: hidden;
+  margin: 2vh;
 }
 text {
   fill: #FFFFFF;
