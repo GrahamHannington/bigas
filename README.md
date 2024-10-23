@@ -88,9 +88,7 @@ For learning to read.
 
 [background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood](https://grahamhannington.github.io/bigas?background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood)
 
-## Parameters
-
-For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
+## Encoding characters in URL parameters
 
 Some characters have a special meaning in URLs and must be encoded when used in the value of a parameter. For example:
 
@@ -105,6 +103,23 @@ Some characters have a special meaning in URLs and must be encoded when used in 
 **Note:** Big As contains code to interpret numeric character references. Browsers typically don't natively support this format in URL parameters.
 
 Depending on your browser, you might not have to worry about URL encoding some characters, such as spaces; the browser does it for you.
+
+## Displaying a slash in the text
+
+A slash (`/`) has a special meaning in the `text` parameter of a Big As URL. To display a slash in the text, insert the slash as a URL-encoded numeric character reference:
+
+- `%26%23x2F%3B` (URL-encoded numeric character reference `&#x2F;`)
+or
+- `%26%2347%3B` (URL-encoded numeric character reference `&#47;`)
+
+Example ("and/or"):
+
+[text=and%26%23x2F%3Bor](https://grahamhannington.github.io/bigas?text=and%26%23x2F%3Bor)
+
+## Parameters
+
+For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
+
 
 ### `background`
 
@@ -302,6 +317,11 @@ Perhaps, if I have time:
 -   Animated page transitions
 
 -   Automated timed paging
+
+-   Named presets. Introduce a new `preset` parameter that supports a limited number of values that represent some combination of parameter values, as a shortcut to specifying all of those parameters.
+    For example, `preset=earth` might display a background image of Earth without all that tedious messing around with the `background` parameter.
+
+-   Dynamically generated Open Graph preview images. This would involve moving Big As to a website hosting environment that supports server-side scripting.
 
 ## History
 

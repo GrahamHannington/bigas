@@ -189,8 +189,6 @@ function insertText (svgElement) {
     // Otherwise, get the current page of text from the state text property
     text = state.text.split(pageSeparator)[state.currentPage - 1]
   }
-  // Unescape any character references in the text
-  text = convertCharRefsToChars(text)
   // Split text into lines
   var dy = 0
   // Make SVG element visible
@@ -203,7 +201,8 @@ function insertText (svgElement) {
     if (dy > 0) {
       svgText.setAttribute('dy', dy)
     }
-    svgElement.appendChild(svgText).textContent = line
+    // Unescape any character references in the line
+    svgElement.appendChild(svgText).textContent = convertCharRefsToChars(line)
     dy += state.lineHeight
   })
   if (state.googleFont) {
