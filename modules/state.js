@@ -12,6 +12,7 @@ let state = {
   height: '100%',
   lineHeight: 16,
   margin: null,
+  random: false,
   text: 'Big As/Possible',
   textAlign: 'center',
   textFill: null,

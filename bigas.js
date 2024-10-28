@@ -14,21 +14,39 @@ function setStateFromURLParams () {
   for (const [key, value] of urlParams) {
     // If the URL parameter name matches a state property, set the state property
     if (Object.hasOwn(state, key)) {
-      // Coerce the URL parameter value (a string or null) to the correct type, based on the type of the existing state property
+      // Coerce the URL parameter value (string or null) to the correct type, based on the type of the existing state property
       switch (typeof state[key]) {
-      case 'string':
-      case 'object':
-        newState[key] = value
-        break
-      case 'number':
-        newState[key] = Number(value)
-        break
+        case 'boolean':
+          // If the state property is a Boolean, then just the parameter name (without a value) means true
+          switch (value.toLowerCase()) {
+            case '':
+            case 'true':
+              newState[key] = true
+              break
+            case 'false':
+              newState[key] = false
+              break
+            default:
+              log.warn('Bad value ignored for URL query string parameter: ' + key + '=' + value + '. Value must be true or false.\nTip: Specifying ' + key + ' (the parameter name by itself, with no trailing equal sign or value) has the same effect as ' + key + '=true.')
+          }
+          break
+        case 'string':
+        case 'object':
+          newState[key] = value
+          break
+        case 'number':
+          newState[key] = Number(value)
+          break
       }
     } else {
       log.warn('Unrecognized parameter in URL query string: ' + key)
     }
   }
   setState(newState)
+  if (getStateProperty('random') === true) {
+    log.info('Random')
+    setStateProperty('currentPage', getRandomPageNumber())
+  }
 }
 
 function formatSVGElementById (svgElementId) {
@@ -83,26 +101,38 @@ function formatSVGElementById (svgElementId) {
 }
 
 function nextPage (svgElement) {
+  var newPage
   const state = getState()
-  const pages = state.text.split(pageSeparator).length
-  if (state.currentPage < pages) {
-    setStateProperty('currentPage', state.currentPage + 1)
+  if (state.random) {
+    newPage = getRandomPageNumber()
   } else {
-    // If we're already at the last page, wrap around to the first page
-    setStateProperty('currentPage', 1)
+    const pages = state.text.split(pageSeparator).length
+    if (state.currentPage < pages) {
+      newPage = state.currentPage + 1
+    } else {
+      // If we're already at the last page, wrap around to the first page
+      newPage = 1
+    }
   }
+  setStateProperty('currentPage', newPage)
   insertText(svgElement)
 }
 
 function prevPage (svgElement) {
+  var newPage
   const state = getState()
-  const pages = state.text.split(pageSeparator).length
-  if (state.currentPage > 1) {
-    setStateProperty('currentPage', state.currentPage - 1)
+  if (state.random) {
+    newPage = getRandomPageNumber()
   } else {
-    // If we're already at the first page, wrap around to the last page
-    setStateProperty('currentPage', pages)
+    const pages = state.text.split(pageSeparator).length
+    if (state.currentPage > 1) {
+      newPage = state.currentPage - 1
+    } else {
+      // If we're already at the first page, wrap around to the last page
+      newPage = pages
+    }
   }
+  setStateProperty('currentPage', newPage)
   insertText(svgElement)
 }
 
@@ -162,6 +192,8 @@ function styleText (svgElement) {
 
 // Shrinkwrap the SVG viewBox to the bounding box of its contents
 function fitSVGViewBoxToBBox (svgElement) {
+  // Remove old viewBox (if you don't, it affects the bounding box calculation)
+  svgElement.removeAttribute('viewBox')
   const state = getState()
   const bbox = svgElement.getBBox()
   const viewBox = {}
@@ -230,6 +262,15 @@ function convertCharRefsToChars (str) {
     return String.fromCharCode(Number('0x' + $1))
   })
   return result
+}
+
+function getRandomPageNumber () {
+  const state = getState()
+  const min = 1
+  const max = state.text.split(pageSeparator).length // Number of pages
+  const random = Math.floor((Math.random() * max) + min)
+  log.info('Random page number: ' + random)
+  return random
 }
 
 export { formatSVGElementById, formatSVGElementsByClassName, setStateFromURLParams }

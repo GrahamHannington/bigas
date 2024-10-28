@@ -30,6 +30,8 @@ Web developers: you can use Big As in your own web pages to display text as big 
 
 - Learning to read sight words.
 
+- Undecided what to have for lunch? Use the [`random`](#random) parameter!
+
 - Any occasion that you want to display text as big as possible on your device.
 
 ## Examples
@@ -87,6 +89,16 @@ This example demonstrates trimming the calculated text bounding box, which might
 For learning to read.
 
 [background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood](https://grahamhannington.github.io/bigas?background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood)
+
+### What's for lunch?
+
+Who said Soylent Green was only on Tuesdays?
+
+[random&background=darkgreen&text=Pizza//Burger//Nachos//Salad//Soylent+Green](https://grahamhannington.github.io/bigas?random&text=Pizza//Burger//Nachos//Salad//Soylent+Green)
+
+### Roll a die
+
+[random&trimTop=2&trimBottom=2&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B](https://grahamhannington.github.io/bigas?random&trimTop=2&trimBottom=2&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B)
 
 ## Encoding characters in URL parameters
 
@@ -185,6 +197,16 @@ Margin around the SVG element (that contains the text) within its parent (contai
 
 Default: `2vh`
 
+### `random`
+
+Show a random page. Paging forward or background shows a different random page.
+
+Only works for text that consists of multiple "pages" (where each "page" is separated by `//`).
+
+Allowed values: `true` or `false`.
+
+**Tip:** Specifying `random` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `random=true`.
+
 ### `text`
 
 Text that you want to display.
@@ -200,7 +222,6 @@ Examples:
 `DON'T/PANIC`
 
 `Sans teeth,/sans eyes,/sans taste,/sans everything`
-
 
 ### `textAlign`
 
@@ -314,9 +335,9 @@ Perhaps, if I have time:
 
 -   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
 
--   Animated page transitions
+-   Animated page transitions. For example, add some pizzazz to rolling a die.
 
--   Automated timed paging
+-   Automated timed paging.
 
 -   Named presets. Introduce a new `preset` parameter that supports a limited number of values that represent some combination of parameter values, as a shortcut to specifying all of those parameters.
     For example, `preset=earth` might display a background image of Earth without all that tedious messing around with the `background` parameter.
