@@ -94,11 +94,11 @@ For learning to read.
 
 Who said Soylent Green was only on Tuesdays?
 
-[random&background=darkgreen&text=Pizza//Burger//Nachos//Salad//Soylent+Green](https://grahamhannington.github.io/bigas?random&text=Pizza//Burger//Nachos//Salad//Soylent+Green)
+[random&background=darkgreen&text=Pizza//Burger//Nachos//Salad//Soylent/Green](https://grahamhannington.github.io/bigas?random&text=Pizza//Burger//Nachos//Salad//Soylent/Green)
 
 ### Roll a die
 
-[random&trimTop=2&trimBottom=2&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B](https://grahamhannington.github.io/bigas?random&trimTop=2&trimBottom=2&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B)
+[random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B](https://grahamhannington.github.io/bigas?random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B)
 
 ## Encoding characters in URL parameters
 

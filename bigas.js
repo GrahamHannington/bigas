@@ -187,7 +187,7 @@ function styleText (svgElement) {
   }
   fitSVGViewBoxToBBox (svgElement)
   // Make SVG element visible
-  svgElement.style.visibility = 'visible'
+  svgElement.setAttribute('class', 'show')
 }
 
 // Shrinkwrap the SVG viewBox to the bounding box of its contents
@@ -223,8 +223,8 @@ function insertText (svgElement) {
   }
   // Split text into lines
   var dy = 0
-  // Make SVG element visible
-  svgElement.style.visibility = 'hidden'
+  // Hide SVG element
+  svgElement.setAttribute('class', 'hide')
   // Remove any existing child elements from the SVG element
   svgElement.querySelectorAll('*').forEach(child => child.remove())
   text.split(lineSeparator).forEach(function (line) {
@@ -269,7 +269,6 @@ function getRandomPageNumber () {
   const min = 1
   const max = state.text.split(pageSeparator).length // Number of pages
   const random = Math.floor((Math.random() * max) + min)
-  log.info('Random page number: ' + random)
   return random
 }
 

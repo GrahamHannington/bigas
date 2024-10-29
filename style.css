@@ -20,8 +20,16 @@ body {
 }
 /* Hide SVG to avoid flash of unstyled content */
 #svg {
-  visibility: hidden;
   margin: 2vh;
+}
+#svg, #svg.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+#svg.show {
+  visibility: visible;
+  transition: opacity 0.5s;
+  opacity: 1;
 }
 text {
   fill: #FFFFFF;
