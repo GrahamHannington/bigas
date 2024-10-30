@@ -187,7 +187,9 @@ function styleText (svgElement) {
   }
   fitSVGViewBoxToBBox (svgElement)
   // Make SVG element visible
-  svgElement.setAttribute('class', 'show')
+  // svgElement.setAttribute('class', 'show')
+  svgElement.classList.add('show')
+  svgElement.classList.remove('hide')
 }
 
 // Shrinkwrap the SVG viewBox to the bounding box of its contents
@@ -224,7 +226,9 @@ function insertText (svgElement) {
   // Split text into lines
   var dy = 0
   // Hide SVG element
-  svgElement.setAttribute('class', 'hide')
+  // svgElement.setAttribute('class', 'hide')
+  svgElement.classList.add('hide')
+  svgElement.classList.remove('show')
   // Remove any existing child elements from the SVG element
   svgElement.querySelectorAll('*').forEach(child => child.remove())
   text.split(lineSeparator).forEach(function (line) {

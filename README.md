@@ -38,6 +38,8 @@ Web developers: you can use Big As in your own web pages to display text as big 
 
 The query strings shown here are links to complete URLs. To show the example, click the link.
 
+For more examples, see the [examples](./examples) folder.
+
 ### DON'T PANIC
 
 [googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC)
