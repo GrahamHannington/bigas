@@ -28,7 +28,6 @@ body {
 }
 #svg.show {
   visibility: visible;
-  transition: opacity 0.5s;
   opacity: 1;
 }
 text {

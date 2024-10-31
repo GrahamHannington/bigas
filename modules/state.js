@@ -8,11 +8,14 @@ let state = {
   fontStyle: 'normal',
   googleFont: null,
   height: null,
+  fadeIn: 0.5,
   fontWeight: '400',
   height: '100%',
+  interval: 0,
   lineHeight: 16,
   margin: null,
   random: false,
+  reverse: false,
   text: 'Big As/Possible',
   textAlign: 'center',
   textFill: null,
@@ -21,7 +24,8 @@ let state = {
   title: 'Big As',
   trimBottom: 0,
   trimTop: 0,
-  width: null
+  width: null,
+  _initialPage: true
 }
 
 // Return the state object

@@ -43,8 +43,10 @@ function setStateFromURLParams () {
     }
   }
   setState(newState)
+  if (getStateProperty('reverse') === true) {
+    setStateProperty('currentPage', getStatePages())
+  }
   if (getStateProperty('random') === true) {
-    log.info('Random')
     setStateProperty('currentPage', getRandomPageNumber())
   }
 }
@@ -56,9 +58,10 @@ function formatSVGElementById (svgElementId) {
   if (state.googleFont) {
  	  loadExternalScript(urlWebFontLoader)
 	}
-  window.addEventListener('load', () => {insertText(svgElement)})
+  window.addEventListener('load', () => {
+    insertText(svgElement)
+  })
   
-  // svgElement.parentElement.addEventListener('keyup', (event) => {
   window.addEventListener('keyup', (event) => {
     const keyHandler = {
       'Enter': nextPage,
@@ -106,12 +109,10 @@ function nextPage (svgElement) {
   if (state.random) {
     newPage = getRandomPageNumber()
   } else {
-    const pages = state.text.split(pageSeparator).length
-    if (state.currentPage < pages) {
-      newPage = state.currentPage + 1
+    if (state.reverse) {
+      newPage = getDecrementedPageNumber()
     } else {
-      // If we're already at the last page, wrap around to the first page
-      newPage = 1
+      newPage = getIncrementedPageNumber()
     }
   }
   setStateProperty('currentPage', newPage)
@@ -124,18 +125,40 @@ function prevPage (svgElement) {
   if (state.random) {
     newPage = getRandomPageNumber()
   } else {
-    const pages = state.text.split(pageSeparator).length
-    if (state.currentPage > 1) {
-      newPage = state.currentPage - 1
+    if (state.reverse) {
+      newPage = getIncrementedPageNumber()
     } else {
-      // If we're already at the first page, wrap around to the last page
-      newPage = pages
+      newPage = getDecrementedPageNumber()
     }
   }
   setStateProperty('currentPage', newPage)
   insertText(svgElement)
 }
 
+function getIncrementedPageNumber () {
+  var newPage
+  const currentPage = getStateProperty('currentPage')
+  const pages = getStatePages()
+  if (currentPage < pages) {
+    newPage = currentPage + 1
+  } else {
+    // If we're already at the last page, wrap around to the first page
+    newPage = 1
+  }
+  return newPage
+}
+
+function getDecrementedPageNumber () {
+  var newPage
+  const currentPage = getStateProperty('currentPage')
+  if (currentPage > 1) {
+    newPage = currentPage - 1
+  } else {
+    // If we're already at the first page, wrap around to the last page
+    newPage = getStatePages()
+  }
+  return newPage
+}
 
 function formatSVGElementsByClassName (className) {
   ;[...document.getElementsByClassName(className)].forEach(element => {
@@ -187,9 +210,21 @@ function styleText (svgElement) {
   }
   fitSVGViewBoxToBBox (svgElement)
   // Make SVG element visible
-  // svgElement.setAttribute('class', 'show')
+  if (state.fadeIn > 0) {
+    svgElement.style.transition = 'opacity ' + state.fadeIn + 's'
+  }
   svgElement.classList.add('show')
   svgElement.classList.remove('hide')
+  // If this is the initial page, then start the interval timer.
+  // Delay starting the timer until the initial page has faded-in,
+  // otherwise the first interval seems too short.
+  // fadeIn is in seconds, setInterval delay is in milliseconds.
+  if (state._initialPage) {
+    if (state.interval > 0) {
+      setTimeout(() => {setInterval(nextPage, state.interval * 1000, svgElement)}, state.fadeIn * 1000)
+    }
+    setStateProperty('_initialPage', false)
+  }
 }
 
 // Shrinkwrap the SVG viewBox to the bounding box of its contents
@@ -226,7 +261,9 @@ function insertText (svgElement) {
   // Split text into lines
   var dy = 0
   // Hide SVG element
-  // svgElement.setAttribute('class', 'hide')
+  if (state.fadeIn > 0) {
+    svgElement.style.transition = 'none'
+  }
   svgElement.classList.add('hide')
   svgElement.classList.remove('show')
   // Remove any existing child elements from the SVG element
@@ -271,9 +308,14 @@ function convertCharRefsToChars (str) {
 function getRandomPageNumber () {
   const state = getState()
   const min = 1
-  const max = state.text.split(pageSeparator).length // Number of pages
+  const max = getStatePages()
   const random = Math.floor((Math.random() * max) + min)
   return random
+}
+
+function getStatePages () {
+  return getStateProperty('text').split(pageSeparator).length // Number of pages
+
 }
 
 export { formatSVGElementById, formatSVGElementsByClassName, setStateFromURLParams }

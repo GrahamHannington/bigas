@@ -14,15 +14,23 @@ Two consecutive slashes (//) represent a *page break*:
 
 https://grahamhannington.github.io/bigas?text=Basement//Medicine//Pavement//Government//Trench/Coat
 
-To page forward, swipe left or press Enter, Page Down, down arrow (&downarrow;), or right arrow (&rightarrow;).
+You can flip between pages manually using touch gestures or a keyboard:
 
-To page back, swipe right or press Page Up, up arrow (&uparrow;), or left arrow (&leftarrow;).
+| Action       | Touch gesture | Key |
+| ------------ | ------------- | --- |
+| Page forward | Swipe left    | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>right arrow (&rightarrow;) |
+| Page back    | Swipe right   | Page Up<br>Up arrow (&uparrow;)<br>Left arrow (&leftarrow;) |
+
+or you can use the `interval` parameter to specify the interval in seconds between automated page flips:
+
+https://grahamhannington.github.io/bigas?interval=2&text=Basement//Medicine//Pavement//Government//Trench/Coat
 
 You can also specify other [parameters](#parameters) such as the background color or image, or the name of a Google font to use.
 
 **Tip:** Big As is best displayed in your browser's full-screen mode (for example, in a desktop browser, press F11).
 
 Web developers: you can use Big As in your own web pages to display text as big as possible in any container element. For details, see the [examples](./examples) folder.
+
 
 ## Uses
 
@@ -102,6 +110,12 @@ Who said Soylent Green was only on Tuesdays?
 
 [random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B](https://grahamhannington.github.io/bigas?random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B)
 
+### Countdown
+
+Automated page flips, one per second, in reverse order.
+
+[reverse&text=1//2//3//4//5//6//7//8//9//10](https://grahamhannington.github.io/bigas?reverse&text=1//2//3//4//5//6//7//8//9//10)
+
 ## Encoding characters in URL parameters
 
 Some characters have a special meaning in URLs and must be encoded when used in the value of a parameter. For example:
@@ -155,6 +169,16 @@ Example image:
 
 `center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)`
 
+### `fadeIn`
+
+Time in seconds to fade-in the next page.
+
+A value of `0` means no fade-in.
+
+Default: `0.5`
+
+Example: `2`
+
 ### `fontWeight`
 
 Default: `400` (normal)
@@ -183,6 +207,16 @@ Example: `50%`
 
 See also: [`width`](#width)
 
+### `interval`
+
+Automates page flipping, specifying the interval in seconds between flips.
+
+Default: `0` (manual page flipping)
+
+Example: `1` (flip every second)
+
+Even with automated page flipping, you can still manually flip between pages. For example, if you quickly manually flip past some pages, automated page flipping will then resume.
+
 ### `lineHeight`
 
 Text line height (vertical distance between each line of text).
@@ -208,6 +242,16 @@ Only works for text that consists of multiple "pages" (where each "page" is sepa
 Allowed values: `true` or `false`.
 
 **Tip:** Specifying `random` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `random=true`.
+
+### `reverse`
+
+Reverse the page order.
+
+Only works for text that consists of multiple "pages" (where each "page" is separated by `//`).
+
+Allowed values: `true` or `false`.
+
+**Tip:** Specifying `reverse` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `reverse=true`.
 
 ### `text`
 
@@ -336,10 +380,6 @@ Perhaps, if I have time:
 -   Optional *automatic* line wrapping that maximizes the font size for the specified text. This was a suggestion from my 11yo son. For now, I've set it aside as *too hard*.
 
 -   Alternative (but still manually specified) line breaks for portrait versus landscape orientation.
-
--   Animated page transitions. For example, add some pizzazz to rolling a die.
-
--   Automated timed paging.
 
 -   Named presets. Introduce a new `preset` parameter that supports a limited number of values that represent some combination of parameter values, as a shortcut to specifying all of those parameters.
     For example, `preset=earth` might display a background image of Earth without all that tedious messing around with the `background` parameter.
