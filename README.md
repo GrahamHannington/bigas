@@ -18,7 +18,7 @@ You can flip between pages manually using touch gestures or a keyboard:
 
 | Action       | Touch gesture | Key |
 | ------------ | ------------- | --- |
-| Page forward | Swipe left    | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>right arrow (&rightarrow;) |
+| Page forward | Swipe left    | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>Right arrow (&rightarrow;) |
 | Page back    | Swipe right   | Page Up<br>Up arrow (&uparrow;)<br>Left arrow (&leftarrow;) |
 
 or you can use the `interval` parameter to specify the interval in seconds between automated page flips:
@@ -114,7 +114,7 @@ Who said Soylent Green was only on Tuesdays?
 
 Automated page flips, one per second, in reverse order.
 
-[reverse&text=1//2//3//4//5//6//7//8//9//10](https://grahamhannington.github.io/bigas?reverse&text=1//2//3//4//5//6//7//8//9//10)
+[interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10](https://grahamhannington.github.io/bigas?interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10)
 
 ## Encoding characters in URL parameters
 
