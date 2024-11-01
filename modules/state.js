@@ -14,6 +14,7 @@ let state = {
   interval: 0,
   lineHeight: 16,
   margin: null,
+  paused: false,
   random: false,
   reverse: false,
   text: 'Big As/Possible',
@@ -25,7 +26,8 @@ let state = {
   trimBottom: 0,
   trimTop: 0,
   width: null,
-  _initialPage: true
+  _initialPage: true,
+  _intervalID: false
 }
 
 // Return the state object

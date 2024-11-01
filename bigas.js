@@ -71,7 +71,8 @@ function formatSVGElementById (svgElementId) {
       'ArrowUp': prevPage,
       'ArrowLeft': prevPage,
       'ArrowUp': prevPage,
-      'PageUp': prevPage
+      'PageUp': prevPage,
+      ' ': togglePause
     }[event.key]
     keyHandler?.(svgElement)
   })
@@ -89,18 +90,50 @@ function formatSVGElementById (svgElementId) {
   svgElement.parentElement.addEventListener('touchend', function(event) {
     touchendX = event.changedTouches[0].screenX
     touchendY = event.changedTouches[0].screenY
-    handleSwipe(svgElement)
+    handleTouchGesture(svgElement)
   }, {passive: true})
 
-  function handleSwipe (svgElement) {
+  function handleTouchGesture (svgElement) {
     if (touchendX < touchstartX) {
-      nextPage (svgElement)
+      nextPage(svgElement)
     }
-    
     if (touchendX > touchstartX) {
-      prevPage (svgElement)
+      prevPage(svgElement)
+    }
+    if (touchendX == touchstartX) {
+      togglePause(svgElement)
     }
   }
+}
+
+// Toggle between pause and automated page flipping
+// (only relevant if interval parameter is greater than 0)
+function togglePause (svgElement) {
+  const state = getState()
+  if (state.interval > 0) {
+    if (state.paused) {
+      // Restart automated page flipping
+      let intervalID = setInterval(nextPage, state.interval * 1000, svgElement)
+      svgElement.style.transition = 'none'
+      svgElement.classList.add('show')
+      svgElement.classList.remove('dim')
+      setStateProperty('_intervalID', intervalID)
+      setStateProperty('paused', false)
+    } else {
+      // Pause automated page flipping
+      clearInterval(state._intervalID)
+      setStateProperty('_intervalID', null)
+      setStateProperty('paused', true)
+      setPauseStyle(svgElement)
+    }
+  }
+}
+
+function setPauseStyle (svgElement) {
+  const state = getState()
+  svgElement.style.transition = 'opacity ' + state.fadeIn + 's'
+  svgElement.classList.add('dim')
+  svgElement.classList.remove('show')
 }
 
 function nextPage (svgElement) {
@@ -221,7 +254,14 @@ function styleText (svgElement) {
   // fadeIn is in seconds, setInterval delay is in milliseconds.
   if (state._initialPage) {
     if (state.interval > 0) {
-      setTimeout(() => {setInterval(nextPage, state.interval * 1000, svgElement)}, state.fadeIn * 1000)
+      if (state.paused) {
+        setPauseStyle (svgElement)
+      } else {
+        setTimeout(() => {
+          let intervalID = setInterval(nextPage, state.interval * 1000, svgElement)
+          setStateProperty('_intervalID', intervalID)
+        }, state.fadeIn * 1000)
+      }
     }
     setStateProperty('_initialPage', false)
   }
@@ -315,7 +355,6 @@ function getRandomPageNumber () {
 
 function getStatePages () {
   return getStateProperty('text').split(pageSeparator).length // Number of pages
-
 }
 
 export { formatSVGElementById, formatSVGElementsByClassName, setStateFromURLParams }

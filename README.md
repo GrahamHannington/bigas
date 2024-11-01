@@ -14,16 +14,15 @@ Two consecutive slashes (//) represent a *page break*:
 
 https://grahamhannington.github.io/bigas?text=Basement//Medicine//Pavement//Government//Trench/Coat
 
-You can flip between pages manually using touch gestures or a keyboard:
-
-| Action       | Touch gesture | Key |
-| ------------ | ------------- | --- |
-| Page forward | Swipe left    | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>Right arrow (&rightarrow;) |
-| Page back    | Swipe right   | Page Up<br>Up arrow (&uparrow;)<br>Left arrow (&leftarrow;) |
-
-or you can use the `interval` parameter to specify the interval in seconds between automated page flips:
+You can flip between pages manually using touch gestures or a keyboard, or you can use the `interval` parameter to automatically flip to the next page after a number of seconds:
 
 https://grahamhannington.github.io/bigas?interval=2&text=Basement//Medicine//Pavement//Government//Trench/Coat
+
+| Action                                   | Touch gesture | Key |
+| ---------------------------------------- | ------------- | --- |
+| Page forward                             | Swipe left    | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>Right arrow (&rightarrow;) |
+| Page back                                | Swipe right   | Page Up<br>Up arrow (&uparrow;)<br>Left arrow (&leftarrow;) |
+| Pause/restart<br>automated page flipping | Tap           | Space bar |
 
 You can also specify other [parameters](#parameters) such as the background color or image, or the name of a Google font to use.
 
@@ -233,13 +232,29 @@ Margin around the SVG element (that contains the text) within its parent (contai
 
 Default: `2vh`
 
+### `paused`
+
+Start in paused mode. The text will appear dimmed.
+
+Only relevant for multipage text with automated page flipping (`interval` greater than 0).
+
+To start automated page flipping, tap the text or press the space bar.
+
+Allowed values: `true` or `false`
+
+Default: `false`
+
+**Tip:** Specifying `paused` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `paused=true`.
+
 ### `random`
 
 Show a random page. Paging forward or background shows a different random page.
 
-Only works for text that consists of multiple "pages" (where each "page" is separated by `//`).
+Only relevant for multipage text.
 
-Allowed values: `true` or `false`.
+Allowed values: `true` or `false`
+
+Default: `false`
 
 **Tip:** Specifying `random` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `random=true`.
 
@@ -249,7 +264,9 @@ Reverse the page order.
 
 Only works for text that consists of multiple "pages" (where each "page" is separated by `//`).
 
-Allowed values: `true` or `false`.
+Allowed values: `true` or `false`
+
+Default: `false`
 
 **Tip:** Specifying `reverse` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `reverse=true`.
 
@@ -348,7 +365,7 @@ See also: [`height`](#height)
 ## Developer notes
 
 Big As is tiny.
-Essentially all Big As does is insert text in an SVG element, and then "shrinkwrap" the `viewBox` attribute of that SVG element to match the bounding box of the text.
+Essentially all Big As does is insert text in an SVG element, and then "shrinkwrap" the `viewBox` attribute of that SVG element to fit the bounding box of the text.
 For an overview of this technique, see [my answer in Stack Overflow](https://stackoverflow.com/a/79065021/1334619).
 
 ### Tricky parts
