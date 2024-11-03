@@ -32,7 +32,7 @@ body {
 }
 #svg.dim {
   visibility: visible;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 text {
   fill: #FFFFFF;

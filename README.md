@@ -47,6 +47,14 @@ The query strings shown here are links to complete URLs. To show the example, cl
 
 For more examples, see the [examples](./examples) folder.
 
+### Sight words
+
+Dolch pre-primary word list.
+
+[text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you](https://grahamhannington.github.io/bigas?text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you)
+
+Want [more Dolch](./examples/#dolch)?
+
 ### DON'T PANIC
 
 [googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC)
@@ -81,23 +89,11 @@ Excerpt of "All the World's a Stage" by William Shakespeare.
 
 ### Hello, world!
 
-[&textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!](https://grahamhannington.github.io/bigas?textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!)
+[textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!](https://grahamhannington.github.io/bigas?textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!)
 
 ### Do your best
 
 [background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
-
-### ace
-
-This example demonstrates trimming the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
-
-[trimTop=4&trimBottom=3&text=ace](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
-
-### Sight words
-
-For learning to read.
-
-[background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood](https://grahamhannington.github.io/bigas?background=darkgreen&text=apple//baby//back//ball//bear//bed//bell//bird//birthday//boat//box//boy//bread//brother//cake//car//cat//chair//chicken//children//Christmas//coat//corn//cow//day//dog//doll//door//duck//egg//eye//farm//farmer//father//feet//fire//fish//floor//flower//game//garden//girl//goat//grass//ground//hand//head//hill//home//horse//house//kitty//leg//letter//man//men//milk//money//morning//mother//name//nest//night//paper//party//picture//pig//rabbit//rain//ring//robin//Santa%20Claus//school//seed//sheep//shoe//sister//snow//song//squirrel//stick//street//sun//table//thing//time//top//toy//tree//watch//water//way//wind//window//woman//women//wood)
 
 ### What's for lunch?
 
@@ -114,6 +110,12 @@ Who said Soylent Green was only on Tuesdays?
 Automated page flips, one per second, in reverse order.
 
 [interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10](https://grahamhannington.github.io/bigas?interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10)
+
+### ace
+
+This example demonstrates trimming the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
+
+[trimTop=4&trimBottom=3&text=ace](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
 
 ## Encoding characters in URL parameters
 
@@ -362,6 +364,19 @@ Example: `50%`
 
 See also: [`height`](#height)
 
+## Editing the query string
+
+Editing a long query string in the address bar of a web browser can be awkward.
+
+Big As enables you to easily copy/paste the query string to/from the text editor of your choice:
+
+- To copy the query string to the Clipboard, press `C` (just the `C` key by itself; the key combination `Ctrl`+`C` retains its original function). Before copying the query string to the Clipboard, Big As adds newline characters to make it easier to edit.
+
+- To paste a query string from the Clipboard, press `V` (just the `V` key). Big As removes any newlines from the pasted text, and then sets the query string to the pasted text, triggering a page load.
+
+**Tip:** The query string doesn't contain a leading question mark (`?`). The question mark is used as a separator in the URL. The question mark is not part of the query string.
+However, if you paste a query string with a leading question mark into Big As, it will work.
+
 ## Developer notes
 
 Big As is tiny.
@@ -402,6 +417,12 @@ Perhaps, if I have time:
     For example, `preset=earth` might display a background image of Earth without all that tedious messing around with the `background` parameter.
 
 -   Dynamically generated Open Graph preview images. This would involve moving Big As to a website hosting environment that supports server-side scripting.
+
+## Won't do
+
+Unless I change my mind:
+
+- An integrated query string editor. Instead, see [Editing the query string](#editing-the-query-string)
 
 ## History
 

@@ -75,6 +75,17 @@ function formatSVGElementById (svgElementId) {
       ' ': togglePause
     }[event.key]
     keyHandler?.(svgElement)
+    // If unmodified (no Alt or Ctrl) key pressed
+    if (!event.ctrlKey && !event.altKey) {
+      switch (event.key) {
+        case 'c':
+          copyPrettifiedQueryStringToClipboard()
+          break
+        case 'v':
+          pastePrettifiedQueryStringToURL()
+          break
+      }
+    }
   })
   
   let touchstartX = 0
@@ -355,6 +366,32 @@ function getRandomPageNumber () {
 
 function getStatePages () {
   return getStateProperty('text').split(pageSeparator).length // Number of pages
+}
+
+async function copyPrettifiedQueryStringToClipboard () {
+  const text = getPrettifiedQueryString()
+  await navigator.clipboard.writeText(text)
+}
+
+function getPrettifiedQueryString () {
+  // Trim leading ? from search property (it's not part of the query string)
+  const queryString = window.location.search.substring(1)
+  // Insert newline after each page break, line break, and parameter separator (&)
+  const prettifiedQueryString = queryString.replace(/\/(\/)?|\&/g, '$&\n')
+  return prettifiedQueryString
+}
+
+// Use contents of Clipboard to set the query string; triggers a page load
+function pastePrettifiedQueryStringToURL () {
+  navigator.clipboard
+    .readText()
+    .then((clipText) => {
+      // The pasted text shouldn't start with a question mark, but if it does, remove it
+      if (clipText[0] === '?') {
+        clipText = clipText.substring(1)
+      }
+      window.location.search = '?' + clipText.replace(/(?:\r\n|\r|\n)/g, '')
+    })
 }
 
 export { formatSVGElementById, formatSVGElementsByClassName, setStateFromURLParams }
