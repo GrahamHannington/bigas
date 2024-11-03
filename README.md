@@ -77,7 +77,11 @@ Or words of your choice to that effect.
 
 Excerpt of "All the World's a Stage" by William Shakespeare.
 
-[textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything](https://grahamhannington.github.io/bigas?textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything)
+[textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything](https://grahamhannington.github.io/bigas?textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything.)
+
+Same text split into multiple pages, with automated page flipping:
+
+[interval=2&fadeIn=1&textAlign=left&text=Sans+teeth,//sans+eyes,//sans+taste,//sans+everything.](https://grahamhannington.github.io/bigas/?interval=2&fadeIn=1&textAlign=left&text=Sans+teeth,//sans+eyes,//sans+taste,//sans+everything.)
 
 ### Road sign
 
@@ -368,7 +372,7 @@ See also: [`height`](#height)
 
 Editing a long query string in the address bar of a web browser can be awkward.
 
-Big As enables you to easily copy/paste the query string to/from the text editor of your choice:
+Big As enables you to easily copy/paste the query string to/from the text editor of your choice via the Clipboard:
 
 - To copy the query string to the Clipboard, press `C` (just the `C` key by itself; the key combination `Ctrl`+`C` retains its original function). Before copying the query string to the Clipboard, Big As adds newline characters to make it easier to edit.
 
@@ -405,6 +409,8 @@ As a manual workaround (I acknowledge that this is a kludge), use the [`trimTop`
 
 Perhaps, if I have time:
 
+-   `loop=true|false` parameter. Current behavior is to loop continuously (effectively, `loop=true`) rather than stop at the last page (`loop=false`).
+
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 
 -   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS.
@@ -422,7 +428,7 @@ Perhaps, if I have time:
 
 Unless I change my mind:
 
-- An integrated query string editor. Instead, see [Editing the query string](#editing-the-query-string)
+- An integrated query string editor. Instead, see [Editing the query string](#editing-the-query-string).
 
 ## History
 
