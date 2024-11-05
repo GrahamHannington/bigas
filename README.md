@@ -82,7 +82,9 @@ text=YES
 ### NO
 
 ```INI
-fontWeight=700&background=red&text=NO
+fontWeight=700&
+background=red&
+text=NO
 ```
 [&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas/?fontWeight=700&background=red&text=NO)
 
@@ -94,7 +96,7 @@ Or words of your choice to that effect.
 googleFont=Creepster&
 textFill=darkred&
 background=black&
-text=GO+AWAY]
+text=GO+AWAY
 ```
 [&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&background=black&text=GO+AWAY)
 
@@ -213,6 +215,20 @@ text=ace
 ```
 [&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
 
+## Editing the query string
+
+Editing a long query string in the address bar of a web browser can be awkward.
+
+You can press a key to copy/paste the query string to/from the text editor of your choice via the Clipboard:
+
+| Action | Key |
+| ------ | --- |
+| Copy the query string to the Clipboard. Big As inserts line breaks to make the string more readable and easier to edit. | `C` (just the `C` key by itself; the key combination `Ctrl`+`C` retains its original function) |
+| Paste a query string from the Clipboard. Big As removes any line breaks, and then sets the query string of the current page to the pasted text, triggering a page load. | `V` (just the `V` key) | 
+
+**Tip:** The query string doesn't contain a leading question mark (`?`). The question mark is used as a separator in the URL. The question mark is not part of the query string.
+However, if you paste a query string with a leading question mark into Big As, it will work.
+
 ## Encoding characters in URL parameters
 
 Some characters have a special meaning in URLs and must be encoded when used in the value of a parameter. For example:
@@ -244,7 +260,6 @@ Example ("and/or"):
 ## Parameters
 
 For general information about specifying parameters in a URL, see the Wikipedia article "[Query string](https://en.wikipedia.org/wiki/Query_string)".
-
 
 ### `background`
 
@@ -473,19 +488,6 @@ Default: `100%`
 Example: `50%`
 
 See also: [`height`](#height)
-
-## Editing the query string
-
-Editing a long query string in the address bar of a web browser can be awkward.
-
-Big As enables you to easily copy/paste the query string to/from the text editor of your choice via the Clipboard:
-
-- To copy the query string to the Clipboard, press `C` (just the `C` key by itself; the key combination `Ctrl`+`C` retains its original function). Before copying the query string to the Clipboard, Big As adds newline characters to make it easier to edit.
-
-- To paste a query string from the Clipboard, press `V` (just the `V` key). Big As removes any newlines from the pasted text, and then sets the query string to the pasted text, triggering a page load.
-
-**Tip:** The query string doesn't contain a leading question mark (`?`). The question mark is used as a separator in the URL. The question mark is not part of the query string.
-However, if you paste a query string with a leading question mark into Big As, it will work.
 
 ## Developer notes
 
