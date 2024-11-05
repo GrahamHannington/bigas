@@ -104,13 +104,17 @@ function formatSVGElementById (svgElementId) {
   svgElement.parentElement.addEventListener('touchstart', function(event) {
     touchstartX = event.changedTouches[0].screenX
     touchstartY = event.changedTouches[0].screenY
-  }, {passive: true})
+    // Don't trigger a redundant mouse event
+    event.preventDefault()
+  }, {passive: false})
 
   svgElement.parentElement.addEventListener('touchend', function(event) {
     touchendX = event.changedTouches[0].screenX
     touchendY = event.changedTouches[0].screenY
     handleTouchGesture(svgElement)
-  }, {passive: true})
+    // Don't trigger a redundant mouse event
+    event.preventDefault()
+  }, {passive: false})
 
   function handleTouchGesture (svgElement) {
     if (touchendX < touchstartX) {
