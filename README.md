@@ -43,7 +43,7 @@ Web developers: you can use Big As in your own web pages to display text as big 
 
 ## Examples
 
-The query strings shown here are links to complete URLs. To show the example, click the link.
+Example query strings are shown here with line breaks for readability. To show an example, click the play button (&#x25B6;&#xFE0F;) following the query string.
 
 For more examples, see the [examples](./examples) folder.
 
@@ -51,75 +51,167 @@ For more examples, see the [examples](./examples) folder.
 
 Dolch pre-primary word list.
 
-[text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you](https://grahamhannington.github.io/bigas?text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you)
+```INI
+text=a//and//away//big//blue//can//come//down//find//for//
+funny//go//help//here//I//in//is//it//jump//little//
+look//make//me//my//not//one//play//red//run//said//
+see//the//three//to//two//up//we//where//yellow//you
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you)
 
 Want [more Dolch](./examples/#dolch)?
 
 ### DON'T PANIC
 
-[googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC)
+```INI
+googleFont=Bungee+Inline&
+background=%23336633&
+text=DON%27T/PANIC
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?googleFont=Bungee+Inline&background=%23336633&text=DON%27T/PANIC)
 
 ### YES
 
-[fontWeight=700&background=green&text=YES](https://grahamhannington.github.io/bigas/?fontWeight=700&background=green&text=YES)
+```INI
+fontWeight=700&
+background=green&
+text=YES
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas/?fontWeight=700&background=green&text=YES)
 
 ### NO
 
-[fontWeight=700&background=red&text=NO](https://grahamhannington.github.io/bigas/?fontWeight=700&background=red&text=NO)
+```INI
+fontWeight=700&background=red&text=NO
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas/?fontWeight=700&background=red&text=NO)
 
 ### GO AWAY
 
 Or words of your choice to that effect.
 
-[googleFont=Creepster&textFill=darkred&background=black&text=GO+AWAY](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&background=black&text=GO+AWAY)
+```INI
+googleFont=Creepster&
+textFill=darkred&
+background=black&
+text=GO+AWAY]
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas/?googleFont=Creepster&textFill=darkred&background=black&text=GO+AWAY)
 
 ### Sans teeth, etc.
 
 Excerpt of "All the World's a Stage" by William Shakespeare.
 
-[textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything](https://grahamhannington.github.io/bigas?textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything.)
+```INI
+textAlign=left&
+text=Sans+teeth,/
+sans+eyes,/
+sans+taste,/
+sans+everything.
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything.)
 
 Same text split into multiple pages, with automated page flipping:
 
-[interval=2&fadeIn=1&textAlign=left&text=Sans+teeth,//sans+eyes,//sans+taste,//sans+everything.](https://grahamhannington.github.io/bigas/?interval=2&fadeIn=1&textAlign=left&text=Sans+teeth,//sans+eyes,//sans+taste,//sans+everything.)
+```INI
+interval=2&
+fadeIn=1&
+textAlign=left&
+text=Sans+teeth,//
+sans+eyes,//
+sans+taste,//
+sans+everything.
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas/?interval=2&fadeIn=1&textAlign=left&text=Sans+teeth,//sans+eyes,//sans+taste,//sans+everything.)
 
 ### Road sign
 
-[textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&background=%23305441](https://grahamhannington.github.io/bigas?textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&background=%23305441)
+```INI
+textAlign=left&
+text=Turn+right/
+onto/
+Hamersley+Road&
+googleFont=Overpass&
+background=%23305441
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?textAlign=left&text=Turn+right/onto/Hamersley+Road&googleFont=Overpass&background=%23305441)
 
 ### SALE
 
-[background=red&text=SALE](https://grahamhannington.github.io/bigas?background=red&text=SALE)
+```INI
+background=red&
+text=SALE
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?background=red&text=SALE)
 
 ### Hello, world!
 
-[textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!](https://grahamhannington.github.io/bigas?textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!)
+```INI
+textStroke=%23000000&
+textStrokeWidth=0.3&
+height=70%&
+background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&
+text=Hello,/world!&
+title=Hello,+world!
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?textStroke=%23000000&textStrokeWidth=0.3&height=70%&background=center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)&text=Hello,/world!&title=Hello,+world!)
 
 ### Do your best
 
-[background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb](https://grahamhannington.github.io/bigas?background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
+```INI
+background=%23262661&
+googleFont=Nunito+Sans&lineHeight=10&
+text=%26%23x269C%3B/dyb
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?background=%23262661&googleFont=Nunito+Sans&lineHeight=10&text=%26%23x269C%3B/dyb)
 
 ### What's for lunch?
 
 Who said Soylent Green was only on Tuesdays?
 
-[random&background=darkgreen&text=Pizza//Burger//Nachos//Salad//Soylent/Green](https://grahamhannington.github.io/bigas?random&text=Pizza//Burger//Nachos//Salad//Soylent/Green)
+```INI
+random&
+background=darkgreen&
+text=Pizza//Burger//Nachos//Salad//Soylent/Green
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?random&text=Pizza//Burger//Nachos//Salad//Soylent/Green)
 
 ### Roll a die
 
-[random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B](https://grahamhannington.github.io/bigas?random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B)
+```INI
+random&
+trimTop=2&
+trimBottom=3&
+text=%26%23x2680%3B//
+%26%23x2681%3B//
+%26%23x2682%3B//
+%26%23x2683%3B//
+%26%23x2684%3B//
+%26%23x2685%3B
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?random&trimTop=2&trimBottom=3&text=%26%23x2680%3B//%26%23x2681%3B//%26%23x2682%3B//%26%23x2683%3B//%26%23x2684%3B//%26%23x2685%3B)
 
 ### Countdown
 
 Automated page flips, one per second, in reverse order.
 
-[interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10](https://grahamhannington.github.io/bigas?interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10)
+```INI
+interval=1&
+reverse&
+text=1//2//3//4//5//6//7//8//9//10
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?interval=1&reverse&text=1//2//3//4//5//6//7//8//9//10)
 
 ### ace
 
 This example demonstrates trimming the calculated text bounding box, which might be too big, especially if the text contains no ascenders and/or no descenders.
 
-[trimTop=4&trimBottom=3&text=ace](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
+```INI
+trimTop=4&
+trimBottom=3&
+text=ace
+```
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?trimTop=4&trimBottom=3&text=ace)
 
 ## Encoding characters in URL parameters
 
@@ -147,7 +239,7 @@ or
 
 Example ("and/or"):
 
-[text=and%26%23x2F%3Bor](https://grahamhannington.github.io/bigas?text=and%26%23x2F%3Bor)
+[`text=and%26%23x2F%3Bor`](https://grahamhannington.github.io/bigas?text=and%26%23x2F%3Bor)
 
 ## Parameters
 
