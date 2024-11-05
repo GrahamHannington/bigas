@@ -52,12 +52,13 @@ For more examples, see the [examples](./examples) folder.
 Dolch pre-primary word list.
 
 ```INI
+background=indigo&
 text=a//and//away//big//blue//can//come//down//find//for//
 funny//go//help//here//I//in//is//it//jump//little//
 look//make//me//my//not//one//play//red//run//said//
 see//the//three//to//two//up//we//where//yellow//you
 ```
-[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you)
+[&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?background=indigo&text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you)
 
 Want [more Dolch](./examples/#dolch)?
 
@@ -526,6 +527,8 @@ Perhaps, if I have time:
 
 -   `loop=true|false` parameter. Current behavior is to loop continuously (effectively, `loop=true`) rather than stop at the last page (`loop=false`).
 
+-   Add a parameter to show the page number (*current*/*last*), probably at the bottom right corner of the screen.
+
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 
 -   Get my head around "full-screen" browser mode in Safari on iOS/iPadOS.
@@ -543,6 +546,8 @@ Perhaps, if I have time:
     I acknowledge that I've focussed on the functionality of the `index.html` page, which uses a single call to `formatSVGElementsByID()`, at the expense of, say, the `formatSVGElementsByClassName()` function.
     
 -   Replace (or augment) the information button with a menu button. I have mixed feelings about this. I want a minimal user interface. It took me a while to come around to the idea of even showing an information button.
+
+-   Add a parameter for multipage text that calculates the largest font size that works for most pages, and then use that font size for most pages.
 
 -   Dynamically generated Open Graph preview images. This would involve moving Big As to a website hosting environment that supports server-side scripting.
 
