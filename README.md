@@ -14,15 +14,15 @@ Two consecutive slashes (`//`) represent a *page break*:
 
 https://grahamhannington.github.io/bigas?text=Basement//Medicine//Pavement//Government//Trench/Coat
 
-You can flip between pages manually using touch gestures or a keyboard, or you can use the `interval` parameter to automatically flip to the next page after a number of seconds:
+You can flip between pages manually using touch gestures, a mouse, or a keyboard, or you can use the `interval` parameter to automatically flip to the next page after a number of seconds:
 
 https://grahamhannington.github.io/bigas?interval=2&text=Basement//Medicine//Pavement//Government//Trench/Coat
 
-| Action                                   | Touch gesture | Key |
-| ---------------------------------------- | ------------- | --- |
-| Page forward                             | Swipe left    | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>Right arrow (&rightarrow;) |
-| Page back                                | Swipe right   | Page Up<br>Up arrow (&uparrow;)<br>Left arrow (&leftarrow;) |
-| Pause/restart<br>automated page flipping | Tap           | Space bar |
+| Action                                   | Touch or mouse gesture | Key |
+| ---------------------------------------- | ---------------------- | --- |
+| Page forward                             | Swipe left             | Enter<br>Page Down<br>Down arrow (&downarrow;)<br>Right arrow (&rightarrow;) |
+| Page back                                | Swipe right            | Page Up<br>Up arrow (&uparrow;)<br>Left arrow (&leftarrow;) |
+| Pause/restart<br>automatic page flipping | Tap or click           | Space bar |
 
 You can also specify other [parameters](#parameters) such as the background color or image, or the name of a Google font to use.
 
@@ -113,7 +113,7 @@ sans+everything.
 ```
 [&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?textAlign=left&text=Sans+teeth,/sans+eyes,/sans+taste,/sans+everything.)
 
-Same text split into multiple pages, with automated page flipping:
+Same text split into multiple pages, with automatic page flipping:
 
 ```INI
 interval=2&
@@ -195,7 +195,7 @@ text=%26%23x2680%3B//
 
 ### Countdown
 
-Automated page flips, one per second, in reverse order.
+Automatic page flips, one per second, in reverse order.
 
 ```INI
 interval=1&
@@ -341,7 +341,7 @@ Default: `0` (manual page flipping)
 
 Example: `1` (flip every second)
 
-Even with automated page flipping, you can still manually flip between pages. For example, if you quickly manually flip past some pages, automated page flipping will then resume.
+Even with automatic page flipping, you can still manually flip between pages. For example, if you quickly manually flip past some pages, automatic page flipping will then resume.
 
 ### `lineHeight`
 
@@ -363,9 +363,9 @@ Default: `2vh`
 
 Start in paused mode. The text will appear dimmed.
 
-Only relevant for multipage text with automated page flipping (`interval` greater than 0).
+Only relevant for multipage text with automatic page flipping (`interval` greater than 0).
 
-To start automated page flipping, tap the text or press the space bar.
+To start automatic page flipping, tap the text or press the space bar.
 
 Allowed values: `true` or `false`
 
@@ -521,9 +521,10 @@ As a manual workaround (I acknowledge that this is a kludge), use the [`trimTop`
 
 Perhaps, if I have time:
 
--   `loop=true|false` parameter. Current behavior is to loop continuously (effectively, `loop=true`) rather than stop at the last page (`loop=false`).
+-   Somehow re-enable copying the text of the current page to the Clipboard. To enable swiping with the mouse, I had to make the text unselectable; otherwise, swiping with the mouse could inadvertently select text.
+    This means the user can't select the text to copy it to the Clipboard. I'm considering adding a custom event handler for `Ctrl`+`C` to do this.
 
--   Handle mouse events for actions (such as page flipping and pausing) in addition to touch gestures and keys.
+-   `loop=true|false` parameter. Current behavior is to loop continuously (effectively, `loop=true`) rather than stop at the last page (`loop=false`).
 
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 

@@ -37,6 +37,7 @@ body {
 text {
   fill: #FFFFFF;
   paint-order: stroke;
+  user-select: none; /* Good: this means you can drag your mouse to flip the page without inadvertently selecting text. Bad: you can't select the text. */
 }
 #info {
   visibility: hidden;

@@ -66,6 +66,8 @@ function formatSVGElementById (svgElementId) {
     }
   })
   
+  // Handle keyboard events
+  
   window.addEventListener('keyup', (event) => {
     const keyHandler = {
       'Enter': nextPage,
@@ -91,6 +93,8 @@ function formatSVGElementById (svgElementId) {
       }
     }
   })
+  
+  // Handle touch events
   
   let touchstartX = 0
   let touchstartY = 0
@@ -119,15 +123,46 @@ function formatSVGElementById (svgElementId) {
       togglePause(svgElement)
     }
   }
+  
+  // Handle mouse events
+  
+  let mousedownX = 0
+  let mousedownY = 0
+  let mouseupX = 0
+  let mouseupY = 0
+
+  svgElement.parentElement.addEventListener('mousedown', function(event) {
+    mousedownX = event.screenX
+    mousedownY = event.screenY
+  })
+
+  svgElement.parentElement.addEventListener('mouseup', function(event) {
+    mouseupX = event.screenX
+    mouseupY = event.screenY
+    handleMouseGesture(svgElement)
+  })
+
+  function handleMouseGesture (svgElement) {
+    if (mouseupX < mousedownX) {
+      nextPage(svgElement)
+    }
+    if (mouseupX > mousedownX) {
+      prevPage(svgElement)
+    }
+    if (mouseupX == mousedownX) {
+      togglePause(svgElement)
+    }
+  }
+
 }
 
-// Toggle between pause and automated page flipping
+// Toggle between pause and automatic page flipping
 // (only relevant if interval parameter is greater than 0)
 function togglePause (svgElement) {
   const state = getState()
   if (state.interval > 0) {
     if (state.paused) {
-      // Restart automated page flipping
+      // Restart automatic page flipping
       let intervalID = setInterval(nextPage, state.interval * 1000, svgElement)
       svgElement.style.transition = 'none'
       svgElement.classList.add('show')
@@ -135,7 +170,7 @@ function togglePause (svgElement) {
       setStateProperty('_intervalID', intervalID)
       setStateProperty('paused', false)
     } else {
-      // Pause automated page flipping
+      // Pause automatic page flipping
       clearInterval(state._intervalID)
       setStateProperty('_intervalID', null)
       setStateProperty('paused', true)
