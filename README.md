@@ -1,6 +1,6 @@
 # Big As
 
-Big As is a web page that displays text as big as possible.
+Big As is a website that displays text as big as possible.
 
 You specify the text to display in the web address:
 
@@ -8,9 +8,9 @@ https://grahamhannington.github.io/bigas?text=Your/text/here
 
 as a `text` parameter in the query string.
 
-A slash (/) in the text represents a line break. If you want line breaks, you need to specify them. ("Big As don't wrap.")
+A slash (`/`) in the text represents a line break. If you want line breaks, you need to specify them. ("Big As don't wrap.")
 
-Two consecutive slashes (//) represent a *page break*:
+Two consecutive slashes (`//`) represent a *page break*:
 
 https://grahamhannington.github.io/bigas?text=Basement//Medicine//Pavement//Government//Trench/Coat
 
@@ -102,7 +102,7 @@ text=GO+AWAY
 
 ### Sans teeth, etc.
 
-Excerpt of "All the World's a Stage" by William Shakespeare.
+Excerpt from "All the World's a Stage" by William Shakespeare.
 
 ```INI
 textAlign=left&
@@ -321,13 +321,13 @@ See also: [`width`](#width)
 
 ### `infoButton`
 
-Show an information button (&#x1F6C8;) at the bottom left corner of the screen.
+Show an information button at the bottom left corner of the screen:
+
+![info](./images/info-icon.svg)
 
 The information button is a link to this page.
 
-If you want a "kiosk" mode with no external links, set `infoButton=false`.
-
-The information button is rendered in the same color as the text ([`textFill`](#textFill)).
+If you want "kiosk" mode with no external links, set `infoButton=false`.
 
 Allowed values: `true` or `false`
 
@@ -503,7 +503,7 @@ Tricky for me:
 
 -   Conditionally synchronously loading the Web Font Loader script. The script is loaded only if the user specifies a Google font.
 
-### Big As doesn't strictly live up to its name
+### Big As doesn't exactly live up to its name
 
 The method that Big As uses to get the bounding box of the text, `getBBox`,
 returns the bounding box of (what I'm going to call) the [body](https://en.wikipedia.org/wiki/Body_height_(typography))
@@ -513,11 +513,17 @@ ascenders or descenders (for example: "[ace](https://grahamhannington.github.io/
 
 As a manual workaround (I acknowledge that this is a kludge), use the [`trimTop`](#trimtop) and [`trimBottom`]((#trimbottom)) parameters to trim the bounding box. 
 
+## Coding standards
+
+- [JavaScript Standard Style](https://standardjs.com/)
+
 ## To do
 
 Perhaps, if I have time:
 
 -   `loop=true|false` parameter. Current behavior is to loop continuously (effectively, `loop=true`) rather than stop at the last page (`loop=false`).
+
+-   Handle mouse events for actions (such as page flipping and pausing) in addition to touch gestures and keys.
 
 -   Allow other built-in fonts. Not just either: (a) use the built-in browser "sans-serif" font or (b) load an external Google font.
 
@@ -530,12 +536,12 @@ Perhaps, if I have time:
 -   Named presets. Introduce a new `preset` parameter that supports a limited number of values that represent some combination of parameter values, as a shortcut to specifying all of those parameters.
     For example, `preset=earth` might display a background image of Earth without all that tedious messing around with the `background` parameter.
     
--   Move user documentation content from this readme to more user-friendly static HTML pages, away from the potentially off-putting developer-centric context of this GitHub readme. Change the destination of the information button to those pages.
+-   Move user docs away from the potentially off-putting developer-centric context of this GitHub readme to more user-friendly static HTML pages. Change the destination of the information button to those pages.
 
 -   Revisit support for multiple instances of "Big As"-formatted SVG element in a single page. This might involve maintaining a separate "state" object to manage each SVG element.
     I acknowledge that I've focussed on the functionality of the `index.html` page, which uses a single call to `formatSVGElementsByID()`, at the expense of, say, the `formatSVGElementsByClassName()` function.
     
--   Replace (or augment) the information button with a menu button. I have mixed feelings about this. I want a minimal user interface. It took me a while to come around to the idea of showing an information button.
+-   Replace (or augment) the information button with a menu button. I have mixed feelings about this. I want a minimal user interface. It took me a while to come around to the idea of even showing an information button.
 
 -   Dynamically generated Open Graph preview images. This would involve moving Big As to a website hosting environment that supports server-side scripting.
 

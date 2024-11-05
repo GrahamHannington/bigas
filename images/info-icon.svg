@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="1.6em" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 24299.26 24299.26">
+<defs>
+<style type="text/css">
+.background {
+  fill: #606060;
+  opacity: 0.7
+}
+.icon {
+  fill: white
+}
+</style>
+</defs>
+<circle class="background" cx="12149.63" cy="12149.63" r="12149.63"/>
+<g class="icon">
+<path d="M12149.63 2803.76c5161.57,0 9345.87,4184.3 9345.87,9345.87 0,5161.57 -4184.3,9345.87 -9345.87,9345.87 -5161.57,0 -9345.87,-4184.3 -9345.87,-9345.87 0,-5161.57 4184.3,-9345.87 9345.87,-9345.87zm0 1246.12c4473.37,0 8099.75,3626.42 8099.75,8099.75 0,4473.37 -3626.38,8099.75 -8099.75,8099.75 -4473.34,0 -8099.75,-3626.38 -8099.75,-8099.75 0,-4473.34 3626.42,-8099.75 8099.75,-8099.75z"/>
+<polygon points="10591.99,18691.74 13707.28,18691.74 13707.28,11215.04 10591.99,11215.04 "/>
+<circle cx="12149.63" cy="7476.7" r="1869.17"/>
+</g>
+</svg>

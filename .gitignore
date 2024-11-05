@@ -1,0 +1,6 @@
+# CorelDRAW backup files
+Backup_of_*.cdr
+# Temporary files (any file name ending in a tilda)
+*~
+# Miscellaneous
+Thumbs.db

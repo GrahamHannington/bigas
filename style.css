@@ -4,7 +4,7 @@ html, body {
   overscroll-behavior-y: none; /* Prevent vertical scroll "bounce" in some browsers */
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Arial Unicode', 'Arial', sans-serif;
 }
 body {
   background: #000000;
@@ -20,7 +20,7 @@ body {
 }
 /* Hide SVG to avoid flash of unstyled content */
 #svg {
-  margin: 2vh;
+  margin: 2vw;
 }
 #svg, #svg.hide {
   visibility: hidden;
@@ -41,12 +41,10 @@ text {
 #info {
   visibility: hidden;
   position: absolute;
-  bottom: 0.5em;
-  left: 0.5em;
+  bottom: 1vw;
+  left: 1vw;
 }
 #info a {
-  opacity: 0.5;
-  font-size: 1.5em;
   color: #FFFFFF;
   text-decoration: none;
 }

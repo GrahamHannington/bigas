@@ -63,10 +63,6 @@ function formatSVGElementById (svgElementId) {
     if (getStateProperty('infoButton') === true) {
       // Show the info button
       document.getElementById('info').style.visibility = 'visible'
-      // Apply the text fill color to the info button.
-      // Known issue: text fill can use SVG color names
-      // that aren't necessarily supported in CSS outside of SVG.
-      document.querySelector('#info a').style.color = getStateProperty('textFill')
     }
   })
   
