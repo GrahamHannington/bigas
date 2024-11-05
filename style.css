@@ -38,3 +38,15 @@ text {
   fill: #FFFFFF;
   paint-order: stroke;
 }
+#info {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+}
+#info a {
+  opacity: 0.5;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-decoration: none;
+}

@@ -11,6 +11,7 @@ let state = {
   fadeIn: 0.5,
   fontWeight: '400',
   height: '100%',
+  infoButton: true,
   interval: 0,
   lineHeight: 16,
   margin: null,

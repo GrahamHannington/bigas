@@ -52,14 +52,22 @@ function setStateFromURLParams () {
 }
 
 function formatSVGElementById (svgElementId) {
-  const svgElement = document.getElementById(svgElementId)
   const state = getState()
+  const svgElement = document.getElementById(svgElementId)
   // If a Google Font is specified, synchronously load the Web Font Loader script
   if (state.googleFont) {
  	  loadExternalScript(urlWebFontLoader)
 	}
   window.addEventListener('load', () => {
     insertText(svgElement)
+    if (getStateProperty('infoButton') === true) {
+      // Show the info button
+      document.getElementById('info').style.visibility = 'visible'
+      // Apply the text fill color to the info button.
+      // Known issue: text fill can use SVG color names
+      // that aren't necessarily supported in CSS outside of SVG.
+      document.querySelector('#info a').style.color = getStateProperty('textFill')
+    }
   })
   
   window.addEventListener('keyup', (event) => {

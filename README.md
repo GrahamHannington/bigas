@@ -35,7 +35,7 @@ Web developers: you can use Big As in your own web pages to display text as big 
 
 - You're in an airport arrivals hall waiting to meet someone you've never met, and you forgot to tell them to look for the person wearing a blue carnation in their lapel.
 
-- Learning to read sight words.
+- Flash cards for learning to read sight words.
 
 - Undecided what to have for lunch? Use the [`random`](#random) parameter!
 
@@ -211,6 +211,20 @@ Default: `100%`
 Example: `50%`
 
 See also: [`width`](#width)
+
+### `infoButton`
+
+Show an information button (&#x1F6C8;) at the bottom left corner of the screen.
+
+The information button is a link to this page.
+
+If you want a "kiosk" mode with no external links, set `infoButton=false`.
+
+The information button is rendered in the same color as the text ([`textFill`](#textFill)).
+
+Allowed values: `true` or `false`
+
+Default: `true`
 
 ### `interval`
 
@@ -421,6 +435,13 @@ Perhaps, if I have time:
 
 -   Named presets. Introduce a new `preset` parameter that supports a limited number of values that represent some combination of parameter values, as a shortcut to specifying all of those parameters.
     For example, `preset=earth` might display a background image of Earth without all that tedious messing around with the `background` parameter.
+    
+-   Move user documentation content from this readme to more user-friendly static HTML pages, away from the potentially off-putting developer-centric context of this GitHub readme. Change the destination of the information button to those pages.
+
+-   Revisit support for multiple instances of "Big As"-formatted SVG element in a single page. This might involve maintaining a separate "state" object to manage each SVG element.
+    I acknowledge that I've focussed on the functionality of the `index.html` page, which uses a single call to `formatSVGElementsByID()`, at the expense of, say, the `formatSVGElementsByClassName()` function.
+    
+-   Replace (or augment) the information button with a menu button. I have mixed feelings about this. I want a minimal user interface. It took me a while to come around to the idea of showing an information button.
 
 -   Dynamically generated Open Graph preview images. This would involve moving Big As to a website hosting environment that supports server-side scripting.
 
