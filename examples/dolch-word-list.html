@@ -10,31 +10,48 @@
 body {
   background: black;
   font-family: 'Arial Unicode', Arial, sans-serif;
-  width: 20em;
-  margin: 0.5em auto 0 auto;
+  margin: 1rem;
 }
 
 h1, a, p {
   color: white;
 }
+h1, p {
+  margin: 0 0 1rem 0;
+}
+
+p {
+  margin-top: 1rem;
+}
 
 h1, .lists a {
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: normal;
 }
 
 a {
   text-decoration: none;
 }
+.lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(15em, 1fr));
+  gap: 1rem;
+}
 
 .lists a {
   display: block;
-  padding: 0.5em;
-  margin-bottom: 0.5em;
+  padding: 1rem;
+  border: 0;
+  transition: border-color 0.5s;
+  border: 0.2rem solid transparent;
 }
 
 p a:hover {
   text-decoration: underline;
+}
+
+.lists a:hover {
+  border-color: white;
 }
 </style>
 </head>
