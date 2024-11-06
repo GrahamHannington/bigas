@@ -49,7 +49,7 @@ For more examples, see the [examples](./examples) folder.
 
 ### Sight words
 
-Dolch pre-primary word list.
+Dolch pre-primer word list.
 
 ```INI
 background=indigo&
@@ -60,7 +60,7 @@ see//the//three//to//two//up//we//where//yellow//you
 ```
 [&#x25B6;&#xFE0F;](https://grahamhannington.github.io/bigas?background=indigo&text=a//and//away//big//blue//can//come//down//find//for//funny//go//help//here//I//in//is//it//jump//little//look//make//me//my//not//one//play//red//run//said//see//the//three//to//two//up//we//where//yellow//you)
 
-Want [more Dolch](./examples/#dolch)?
+Want [more Dolch](https://grahamhannington.github.io/bigas/examples/dolch-word-list.html)?
 
 ### DON'T PANIC
 

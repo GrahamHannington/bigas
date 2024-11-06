@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" width="1.6em" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 24299.26 24299.26">
+<defs>
+<style type="text/css">
+.background {
+  fill: #606060;
+  opacity: 0.7
+}
+.icon {
+  fill: white
+}
+</style>
+</defs>
+<circle class="background" cx="12149.63" cy="12149.63" r="12149.63"/>
+<g class="icon">
+<polygon points="12940.39,5541.04 10737.53,3338.19 1926.03,12149.69 10737.41,20961.07 12940.26,18758.22 7889.32,13707.28 21807.03,13707.28 21807.03,10591.99 7889.44,10591.99 "/>
+</g>
+</svg>
