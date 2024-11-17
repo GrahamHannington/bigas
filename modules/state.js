@@ -27,6 +27,7 @@ let state = {
   trimBottom: 0,
   trimTop: 0,
   width: null,
+  wordPerLineInPortrait: false,
   _initialPage: true,
   _intervalID: false
 }

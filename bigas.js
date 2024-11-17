@@ -158,6 +158,12 @@ function formatSVGElementById (svgElementId) {
     }
   }
 
+  // Handle screen orientation change
+  screen.orientation.addEventListener('change', (event) => {
+    const type = event.target.type
+    insertText (svgElement)
+  })
+
 }
 
 // Toggle between pause and automatic page flipping
@@ -276,8 +282,8 @@ function styleText (svgElement) {
     if (state.textStroke) text.style.stroke = state.textStroke
     if (state.textStrokeWidth) text.style.strokeWidth = state.textStrokeWidth
   }
-  // Center text
-  if (state.textAlign == 'center') {
+  // Center or right-align text
+  if ((state.textAlign == 'center') || (state.textAlign == 'right')) {
     var maxTextWidth = 0
     var thisTextWidth = 0
     // Get width of widest line
@@ -287,14 +293,24 @@ function styleText (svgElement) {
         maxTextWidth = thisTextWidth
       }
     }
-    // Shift narrower lines right, centering them relative to the widest line
     for (const text of svgElement.children) {
       thisTextWidth = text.getBBox().width
-      if (thisTextWidth < maxTextWidth) {
-        text.setAttribute('dx', (maxTextWidth - thisTextWidth) / 2)
+      switch (state.textAlign) {
+        case 'center':
+          // Shift narrower lines right, centering them relative to the widest line
+          if (thisTextWidth < maxTextWidth) {
+            text.setAttribute('dx', (maxTextWidth - thisTextWidth) / 2)
+          }
+          break
+        case 'right':
+          // Shift narrower lines right
+          if (thisTextWidth < maxTextWidth) {
+            text.setAttribute('dx', (maxTextWidth - thisTextWidth))
+          }
       }
     }
   }
+
   fitSVGViewBoxToBBox (svgElement)
   // Make SVG element visible
   if (state.fadeIn > 0) {
@@ -345,6 +361,10 @@ function insertText (svgElement) {
   const svgNS = 'http://www.w3.org/2000/svg'
   const state = getState()
   var text
+  var regexLineSeparator = new RegExp(lineSeparator, 'g')
+  if (state.wordPerLineInPortrait && (screen.orientation.type == 'portrait-primary')) {
+    regexLineSeparator = new RegExp('[' + lineSeparator + ', ]', 'g')
+  }
   // If the SVG element specifies text in its own data-text attribute, use it
 	if (svgElement.dataset.text) {
 	  text = svgElement.dataset.text
@@ -352,6 +372,7 @@ function insertText (svgElement) {
     // Otherwise, get the current page of text from the state text property
     text = state.text.split(pageSeparator)[state.currentPage - 1]
   }
+  text = resolveConditionalContent(text)
   // Split text into lines
   var dy = 0
   // Hide SVG element
@@ -362,7 +383,8 @@ function insertText (svgElement) {
   svgElement.classList.remove('show')
   // Remove any existing child elements from the SVG element
   svgElement.querySelectorAll('*').forEach(child => child.remove())
-  text.split(lineSeparator).forEach(function (line) {
+
+  text.split(regexLineSeparator).forEach(function (line) {
     // Put each line of text into its own SVG <text> element
     let svgText = document.createElementNS(svgNS, 'text')
     if (dy > 0) {
@@ -389,12 +411,50 @@ function insertText (svgElement) {
 function convertCharRefsToChars (str) {
   var regex = /&#(\d+);/g
   var result
-  result = str.replace(regex, function (_ , $1) {
-    return String.fromCharCode($1)
+  result = str.replace(regex, function (_ , group) {
+    return String.fromCharCode(group)
   })
   regex = /&#x([A-Fa-f0-9]+);/g
-  result = result.replace(regex, function (_ , $1) {
-    return String.fromCharCode(Number('0x' + $1))
+  result = result.replace(regex, function (_ , group) {
+    return String.fromCharCode(Number('0x' + group))
+  })
+  return result
+}
+
+// Resolve conditional text content (such as screen-orientation-specific content)
+function resolveConditionalContent(line) {
+  // Handle landscape-specific content
+  var regex = /\[l:([^\]]+)\]/g
+  var result = line
+  result = line.replace(regex, function (_ , group) {
+    var resolved
+    switch (screen.orientation.type) {
+      case 'landscape-primary':
+        // Remove conditional markup wrapper (the match), keep content (the group)
+        resolved = group
+        break
+      case 'portrait-primary':
+        // Remove the entire match (conditional markup wrapper and its content)
+        resolved = ''
+        break
+    }
+    return resolved
+  })
+  // Handle portrait-specific content
+  regex = /\[p:([^\]]+)\]/g
+  result = result.replace(regex, function (_ , group) {
+    var resolved
+    switch (screen.orientation.type) {
+      case 'portrait-primary':
+        // Remove conditional markup wrapper (the match), keep content (the group)
+        resolved = group
+        break
+      case 'landscape-primary':
+        // Remove the entire match (conditional markup wrapper and its content)
+        resolved = ''
+        break
+    }
+    return resolved
   })
   return result
 }

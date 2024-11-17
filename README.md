@@ -490,6 +490,32 @@ Example: `50%`
 
 See also: [`height`](#height)
 
+### `wordPerLineInPortrait`
+
+In portrait screen orientation, show each word on a separate line; treat each space as a line break.
+
+Allowed values: `true` or `false`
+
+Default: `false`
+
+**Tip:** Specifying `wordPerLineInPortrait` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `wordPerLineInPortrait=true`.
+
+## Conditional orientation-specific content
+
+To conditionally display text depending on the screen orientation, wrap the text in conditional markup.
+
+Portrait-only:
+
+`[p:Your portrait-only text here]`
+
+Landscape-only:
+
+`[l:Your landscape-only text here]`
+
+Conditional text can include, or consist only of, a line break or a space. For example, to display a line break in portrait but a space in landscape, specify:
+
+`[p:/][l:+]`
+
 ## Developer notes
 
 Big As is tiny.
