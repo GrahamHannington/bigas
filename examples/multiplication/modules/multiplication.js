@@ -4,7 +4,7 @@ import { log } from '../../../modules/log.js'
 const urlEncodedMultiplicationSign = '%26%23x00D7%3B'
 const urlEncodedSpace = '+'
 const urlEncodedNoBreakSpace = '%26%23xA0%3B'
-const urlEncodedEqualsSign = '%26%23x003D%3B'
+const urlEncodedEqualsSign = '%26%23x3D%3B'
 const urlEncodedEnDash = '%26%23x2013%3B'
 
 const lineSeparator = '/'
