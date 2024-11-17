@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<title>Burger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="../images/favicon.ico" rel="shortcut icon"/>
+<script type="module">
+import * as Multiplication from "./modules/multiplication.js"
+Multiplication.init()
+</script>
+<style>
+  body {
+    background: black;
+    font-family: 'Arial Unicode', Arial, sans-serif;
+    margin: 1rem;
+  }
+  
+  h1, div, p {
+    color: white;
+  }
+  h1, p {
+    margin: 0 0 1rem 0;
+  }
+  
+  p {
+    margin-top: 1rem;
+  }
+  
+  h1, .tables .table {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+  
+  .tables {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(15em, 1fr));
+    gap: 1rem;
+  }
+  
+  .tables .table {
+    padding: 1rem;
+    border: 0;
+    transition: border-color 0.5s;
+    border: 0.2rem solid transparent;
+    background: royalblue;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+  
+  .tables .table:hover {
+    border-color: white;
+  }
+</style>
+</head>
+<body>
+</body>
+</html>

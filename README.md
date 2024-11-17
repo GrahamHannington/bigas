@@ -282,6 +282,12 @@ Example image:
 
 `center/contain+no-repeat+url(https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57723/globe_west_2048.jpg)`
 
+### `backBackground`
+
+Overrides `background` on even-numbered pages.
+
+For allowed values, see `background`.
+
 ### `fadeIn`
 
 Time in seconds to fade-in the next page.

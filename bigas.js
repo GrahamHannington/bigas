@@ -268,6 +268,7 @@ function loadExternalScript (src) {
 
 function styleText (svgElement) {
   const state = getState()
+  var background = null
   if (state.googleFont) svgElement.style.fontFamily = state.googleFont
   if (state.fontWeight) svgElement.style.fontWeight = state.fontWeight
   if (state.fontStyle) svgElement.style.fontStyle = state.fontStyle
@@ -275,7 +276,10 @@ function styleText (svgElement) {
   if (state.width) svgElement.style.width = state.width
   if (state.height) svgElement.style.height = state.height
   // Apply background to parent (container) element
-  if (state.background) svgElement.parentElement.style.background = state.background
+  if (state.background) background = state.background
+  // If the current page number is even, use backBackground, if it is set
+  if ((state.currentPage % 2 == 0) && state.backBackground) background = state.backBackground
+  if (background) svgElement.parentElement.style.background = background
   // Apply text styles
   for (const text of svgElement.children) {
     if (state.textFill) text.style.fill = state.textFill

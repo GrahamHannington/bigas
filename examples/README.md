@@ -6,6 +6,19 @@
 
 - [Days of the week](https://grahamhannington.github.io/bigas?text=Monday//Tuesday//Wednesday//Thursday//Friday//Saturday//Sunday)
 
+## [Multiplication tables](https://grahamhannington.github.io/bigas/examples/multiplication)
+
+By default, this example lists multiplication tables from 1 to 12, and then shows the selected table as a set of flash cards, in pairs of "questions" and "answers".
+
+Alternatively, you can specify a query string to go directly to a multiplication table.
+
+Examples:
+
+[`multiplicand=15&maxMultiplier=10`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=15&maxMultiplier=10)
+
+
+[`multiplicand=13&minMultiplier=-3&maxMultiplier=9`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=13&minMultiplier=-3&maxMultiplier=9)
+
 ## [Burger](https://grahamhannington.github.io/bigas/examples/burger.html)
 
 Web developers: this example uses the `formatSVGElementsByClassName()` function to format multiple SVG elements based on class name.

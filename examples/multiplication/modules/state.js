@@ -2,35 +2,12 @@
 
 // Initialize the state
 let state = {
-  appName: 'Big As',
-  background: '#000000',
-  backBackground: null,
-  currentPage: 1,
-  fontStyle: 'normal',
-  googleFont: null,
-  height: null,
-  fadeIn: 0.5,
-  fontWeight: '400',
-  height: '100%',
-  infoButton: true,
-  interval: 0,
-  lineHeight: 16,
-  margin: null,
-  paused: false,
-  random: false,
-  reverse: false,
-  text: 'Big As/Possible',
-  textAlign: 'center',
-  textFill: null,
-  textStroke: null,
-  textStrokeWidth: null,
-  title: 'Big As',
-  trimBottom: 0,
-  trimTop: 0,
-  width: null,
-  wordPerLineInPortrait: false,
-  _initialPage: true,
-  _intervalID: false
+  appName: 'Multiplication tables',
+  multiplicand: null,
+  minMultiplicand: 1,
+  maxMultiplicand: 12,
+  minMultiplier: 1,
+  maxMultiplier: 12
 }
 
 // Return the state object
