@@ -158,12 +158,24 @@ function formatSVGElementById (svgElementId) {
     }
   }
 
-  // Handle screen orientation change
-  screen.orientation.addEventListener('change', (event) => {
-    const type = event.target.type
-    insertText (svgElement)
+  // Handle aspect ratio (e.g. screen orientation) change
+  const resizeObserver = new ResizeObserver((entries) => {
+    entries.forEach(entry => {
+      const oldAspectRatioType = getStateProperty('_aspectRatioType')
+      let newAspectRatioType
+      const { inlineSize: borderWidth, blockSize: borderHeight } = entry.borderBoxSize[0]
+      if (borderWidth < borderHeight) {
+        newAspectRatioType = 'portrait'
+      } else {
+        newAspectRatioType = 'landscape'
+      }
+      if (newAspectRatioType != oldAspectRatioType) {
+        setStateProperty('_aspectRatioType', newAspectRatioType)
+        insertText(svgElement)
+      }
+    })
   })
-
+  resizeObserver.observe(svgElement.parentElement)
 }
 
 // Toggle between pause and automatic page flipping
@@ -364,9 +376,19 @@ function fitSVGViewBoxToBBox (svgElement) {
 function insertText (svgElement) {
   const svgNS = 'http://www.w3.org/2000/svg'
   const state = getState()
+  // If the aspect ration type has not yet been set, then set it
+  var aspectRatioType = state._aspectRatioType
+  if (!aspectRatioType) {
+    if (svgElement.parentElement.clientWidth < svgElement.parentElement.clientHeight) {
+      aspectRatioType = 'portrait'
+    } else {
+      aspectRatioType = 'landscape'
+    }
+    setStateProperty('_aspectRatioType', aspectRatioType)
+  }
   var text
   var regexLineSeparator = new RegExp(lineSeparator, 'g')
-  if (state.wordPerLineInPortrait && (screen.orientation.type == 'portrait-primary')) {
+  if (state.wordPerLineInPortrait && (aspectRatioType == 'portrait')) {
     regexLineSeparator = new RegExp('[' + lineSeparator + ', ]', 'g')
   }
   // If the SVG element specifies text in its own data-text attribute, use it
@@ -425,19 +447,20 @@ function convertCharRefsToChars (str) {
   return result
 }
 
-// Resolve conditional text content (such as screen-orientation-specific content)
+// Resolve conditional text content (such as aspect-ratio-specific content)
 function resolveConditionalContent(line) {
+  const aspectRatioType = getStateProperty('_aspectRatioType')
   // Handle landscape-specific content
   var regex = /\[l:([^\]]+)\]/g
   var result = line
   result = line.replace(regex, function (_ , group) {
     var resolved
-    switch (screen.orientation.type) {
-      case 'landscape-primary':
+    switch (aspectRatioType) {
+      case 'landscape':
         // Remove conditional markup wrapper (the match), keep content (the group)
         resolved = group
         break
-      case 'portrait-primary':
+      case 'portrait':
         // Remove the entire match (conditional markup wrapper and its content)
         resolved = ''
         break
@@ -448,12 +471,12 @@ function resolveConditionalContent(line) {
   regex = /\[p:([^\]]+)\]/g
   result = result.replace(regex, function (_ , group) {
     var resolved
-    switch (screen.orientation.type) {
-      case 'portrait-primary':
+    switch (aspectRatioType) {
+      case 'portrait':
         // Remove conditional markup wrapper (the match), keep content (the group)
         resolved = group
         break
-      case 'landscape-primary':
+      case 'landscape':
         // Remove the entire match (conditional markup wrapper and its content)
         resolved = ''
         break

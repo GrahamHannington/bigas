@@ -1,11 +1,11 @@
 import { getState, setState, getStateProperty, setStateProperty } from './state.js'
 import { log } from '../../../modules/log.js'
 
-const urlEncodedMultiplicationSign = '%26%23x00D7%3B'
+const urlEncodedMultiplicationSign = '%C3%97'
 const urlEncodedSpace = '+'
-const urlEncodedNoBreakSpace = '%26%23xA0%3B'
-const urlEncodedEqualsSign = '%26%23x3D%3B'
-const urlEncodedEnDash = '%26%23x2013%3B'
+const urlEncodedNoBreakSpace = '%C2%A0'
+const urlEncodedEqualsSign = '%3D'
+const urlEncodedEnDash = '%E2%80%93'
 
 const lineSeparator = '/'
 const pageSeparator = '//'
@@ -31,6 +31,8 @@ function showListofTables () {
     table.dataset.minMultiplier = state.minMultiplier
     table.dataset.maxMultiplier = state.maxMultiplier
     table.classList.add('table')
+    // \u{00D7} is a multiplication sign
+    // \u{2026} is a horizontal ellipsis
     table.textContent = multiplicand + ' \u{00D7} ' + state.minMultiplier + ' \u{2026} ' + state.maxMultiplier
     table.addEventListener('click', (event) => {
       showTableBigAs (table.dataset.multiplicand, table.dataset.minMultiplier, table.dataset.maxMultiplier)

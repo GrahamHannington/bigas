@@ -506,9 +506,9 @@ Default: `false`
 
 **Tip:** Specifying `wordPerLineInPortrait` (the parameter name by itself, with no trailing equal sign or value) has the same effect as `wordPerLineInPortrait=true`.
 
-## Conditional orientation-specific content
+## Conditional aspect-ratio-specific content
 
-To conditionally display text depending on the screen orientation, wrap the text in conditional markup.
+To conditionally display text depending on the aspect ratio of the parent element of the Big As SVG element, wrap the text in conditional markup.
 
 Portrait-only:
 
