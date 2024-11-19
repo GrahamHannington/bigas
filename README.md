@@ -424,9 +424,9 @@ Examples:
 
 Text horizontal alignment.
 
-Default: `center`
+Allowed values: `left`, `center`, `right`
 
-Example: `left`
+Default: `center`
 
 ### `textFill`
 
