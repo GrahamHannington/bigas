@@ -59,7 +59,7 @@ function showTableBigAs (multiplicand, minMultiplier, maxMultiplier, interval) {
   if (interval > 0) {
     queryString = 'interval=' + interval + '&'
   }
-  queryString += 'background=royalblue&backBackground=darkgreen&textAlign=right&wordPerLineInPortrait=true&text='
+  queryString += 'title=' + multiplicand + '+' + urlEncodedMultiplicationSign + '+multiplication+table&background=royalblue&backBackground=darkgreen&textAlign=right&wordPerLineInPortrait=true&text='
   for (let multiplier = minMultiplier; multiplier <= maxMultiplier; multiplier++) {
     problemText = multiplicand + urlEncodedSpace + urlEncodedMultiplicationSign + urlEncodedNoBreakSpace + multiplier
     // Build a horizontal rule from en dashes

@@ -49,6 +49,8 @@ function setStateFromURLParams () {
   if (getStateProperty('random') === true) {
     setStateProperty('currentPage', getRandomPageNumber())
   }
+  const title = getStateProperty('title')
+  if (title) document.title = title
 }
 
 function formatSVGElementById (svgElementId) {

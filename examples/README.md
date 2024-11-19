@@ -1,10 +1,14 @@
 # Examples
 
+In addition to the [examples in the main readme](../README.md#examples).
+
 ## Word lists
 
 - [Dolch](https://grahamhannington.github.io/bigas/examples/dolch-word-list.html)
 
 - [Days of the week](https://grahamhannington.github.io/bigas?text=Monday//Tuesday//Wednesday//Thursday//Friday//Saturday//Sunday)
+
+- [Months of the year](https://grahamhannington.github.io/bigas?text=January//February//March//April//May//June//July//August//September//October//November//December)
 
 ## [Multiplication tables](https://grahamhannington.github.io/bigas/examples/multiplication)
 
