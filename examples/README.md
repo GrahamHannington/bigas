@@ -8,16 +8,60 @@
 
 ## [Multiplication tables](https://grahamhannington.github.io/bigas/examples/multiplication)
 
-By default, this example lists multiplication tables from 1 to 12, and then shows the selected table as a set of flash cards, in pairs of "questions" and "answers".
+By default, this example lists multiplication tables from 1 to 12, and then shows the selected table as a set of flash cards, in pairs of "questions" (a &times; b) and "answers" (a &times; b = c).
 
-Alternatively, you can specify a query string to go directly to a multiplication table.
+### Parameters
+
+You can optionally specify parameters in the query string of the URL to customize behavior.
+
+In these paremeters, the term *multiplicand* refers to the first factor and *multiplier* refers to the second factor, as in:
+
+*multiplicand* &times; *multiplier*
+
+(acknowledging that not everyone agrees with this order)
+
+#### `maxMultiplicand`
+
+Maximum multiplicand.
+
+Default: `12`
+
+Example:
+
+- List tables all the way up to 24 &times; 24: [`maxMultiplicand=24&maxMultiplier=24`](https://grahamhannington.github.io/bigas/examples/multiplication/?maxMultiplicand=24&maxMultiplier=24)
+
+#### `maxMultiplier`
+
+Maximum multiplier.
+
+Default: `12`
+
+#### `minMultiplicand`
+
+Minimum multiplicand.
+
+Default: `1`
+
+#### `minMultiplier`
+
+Minimum multiplier.
+
+Default: `1`
+
+#### `multiplicand`
+
+Go directly to the table for a specific multiplicand, bypassing the list of tables.
 
 Examples:
 
-[`multiplicand=15&maxMultiplier=10`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=15&maxMultiplier=10)
+- 15 &times; 1 &hellip; 10: [`multiplicand=15&maxMultiplier=10`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=15&maxMultiplier=10)
 
+- 13 &times; -3 &hellip; 9: [`multiplicand=13&minMultiplier=-3&maxMultiplier=9`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=13&minMultiplier=-3&maxMultiplier=9)
 
-[`multiplicand=13&minMultiplier=-3&maxMultiplier=9`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=13&minMultiplier=-3&maxMultiplier=9)
+To do:
+
+- New parameter to go to a random "page" (table entry) rather than the next page in sequential order
+- Automatic page flipping (passthrough for the existing Big As `interval` parameter)
 
 ## [Burger](https://grahamhannington.github.io/bigas/examples/burger.html)
 
