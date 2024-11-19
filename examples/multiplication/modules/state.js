@@ -3,6 +3,7 @@
 // Initialize the state
 let state = {
   appName: 'Multiplication tables',
+  interval: 0,
   multiplicand: null,
   minMultiplicand: 1,
   maxMultiplicand: 12,

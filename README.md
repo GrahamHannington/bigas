@@ -35,7 +35,7 @@ Web developers: you can use Big As in your own web pages to display text as big 
 
 - You're in an airport arrivals hall waiting to meet someone you've never met, and you forgot to tell them to look for the person wearing a blue carnation in their lapel.
 
-- Flash cards for learning to read sight words.
+- Flash cards for learning to read sight words or learning multiplication tables.
 
 - Undecided what to have for lunch? Use the [`random`](#random) parameter!
 

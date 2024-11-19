@@ -14,7 +14,7 @@ function init () {
   setStateFromURLParams ()
   const state = getState()
   if (state.multiplicand) {
-    showTableBigAs(state.multiplicand, state.minMultiplier, state.maxMultiplier)
+    showTableBigAs(state.multiplicand, state.minMultiplier, state.maxMultiplier, state.interval)
   } else {
     showListofTables()
   }
@@ -22,11 +22,11 @@ function init () {
 
 function showListofTables () {
   const state = getState()
-  let heading = document.createElement("h1")
-  let tables = document.createElement("div")
+  let heading = document.createElement('h1')
+  let tables = document.createElement('div')
   tables.classList.add('tables')
   for (let multiplicand = state.minMultiplicand; multiplicand <= state.maxMultiplicand; multiplicand++) {
-    let table = document.createElement("div")
+    let table = document.createElement('div')
     table.dataset.multiplicand = multiplicand
     table.dataset.minMultiplier = state.minMultiplier
     table.dataset.maxMultiplier = state.maxMultiplier
@@ -35,21 +35,31 @@ function showListofTables () {
     // \u{2026} is a horizontal ellipsis
     table.textContent = multiplicand + ' \u{00D7} ' + state.minMultiplier + ' \u{2026} ' + state.maxMultiplier
     table.addEventListener('click', (event) => {
-      showTableBigAs (table.dataset.multiplicand, table.dataset.minMultiplier, table.dataset.maxMultiplier)
+      showTableBigAs (table.dataset.multiplicand, table.dataset.minMultiplier, table.dataset.maxMultiplier, state.interval)
     })
     tables.appendChild(table)
   }
   heading.textContent = state.appName
   document.body.appendChild(heading)
+  if (state.interval > 0) {
+    let behavior = document.createElement('p')
+    let units = state.interval == 1 ? 'second' : 'seconds'
+    behavior.textContent = 'Automatic page flip every ' + state.interval + ' ' + units
+    document.body.appendChild(behavior)
+  }
   document.body.appendChild(tables)
 }
 
-function showTableBigAs (multiplicand, minMultiplier, maxMultiplier) {
+function showTableBigAs (multiplicand, minMultiplier, maxMultiplier, interval) {
   var problemText
   var solutionText
   var horizontalRule
   var result
-  var queryString = 'background=royalblue&backBackground=darkgreen&textAlign=right&wordPerLineInPortrait=true&text='
+  var queryString = ''
+  if (interval > 0) {
+    queryString = 'interval=' + interval + '&'
+  }
+  queryString += 'background=royalblue&backBackground=darkgreen&textAlign=right&wordPerLineInPortrait=true&text='
   for (let multiplier = minMultiplier; multiplier <= maxMultiplier; multiplier++) {
     problemText = multiplicand + urlEncodedSpace + urlEncodedMultiplicationSign + urlEncodedNoBreakSpace + multiplier
     // Build a horizontal rule from en dashes

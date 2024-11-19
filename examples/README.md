@@ -8,17 +8,33 @@
 
 ## [Multiplication tables](https://grahamhannington.github.io/bigas/examples/multiplication)
 
-By default, this example lists multiplication tables from 1 to 12, and then shows the selected table as a set of flash cards, in pairs of "questions" (a &times; b) and "answers" (a &times; b = c).
+This example demonstrates programmatically generated Big As URLs.
+
+By default, this example lists multiplication tables from 1 to 12, and then shows the selected table as a set of flash cards, in pairs of "questions" (*a* &times; *b*) and "answers" (*a* &times; *b* = *c*).
 
 ### Parameters
 
-You can optionally specify parameters in the query string of the URL to customize behavior.
+You can optionally specify parameters in the query string of the `examples/multiplication` URL to customize behavior.
 
-In these paremeters, the term *multiplicand* refers to the first factor and *multiplier* refers to the second factor, as in:
+In these paremeters, the term *multiplicand* refers to the first factor and *multiplier* refers to the second factor:
 
 *multiplicand* &times; *multiplier*
 
 (acknowledging that not everyone agrees with this order)
+
+#### `interval`
+
+Automates page flipping, specifying the interval in seconds between flips.
+
+Default: `0` (manual page flipping)
+
+Example:
+
+- Flip every second: [`interval=1`](https://grahamhannington.github.io/bigas/examples/multiplication/?interval=1)
+
+Even with automatic page flipping, you can still manually flip between pages. For example, if you quickly manually flip past some pages, automatic page flipping will then resume.
+
+**Note:** This is simply a "passthrough" to the underlying Big As `interval` parameter.
 
 #### `maxMultiplicand`
 
@@ -58,10 +74,9 @@ Examples:
 
 - 13 &times; -3 &hellip; 9: [`multiplicand=13&minMultiplier=-3&maxMultiplier=9`](https://grahamhannington.github.io/bigas/examples/multiplication/?multiplicand=13&minMultiplier=-3&maxMultiplier=9)
 
-To do:
+### To do
 
-- New parameter to go to a random "page" (table entry) rather than the next page in sequential order
-- Automatic page flipping (passthrough for the existing Big As `interval` parameter)
+- New `random` parameter to change the next/previous page behavior to go to a random page instead.
 
 ## [Burger](https://grahamhannington.github.io/bigas/examples/burger.html)
 
